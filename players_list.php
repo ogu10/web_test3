@@ -5,12 +5,13 @@
     <font color=blue>
         <?php
         $pdo = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');
-        $stmt = $pdo->query('SELECT * FROM players');
+        $stmt = $pdo->query('SELECT * FROM players ORDER BY `players`.`id` DESC LIMIT 16');
         $result = 0;
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo "<table>\n";
         echo "<tr>\n";
-        echo "<th>No</th></th><th>player</th><th><th>team</th>\n";
+        echo "<th>No</th>";
+        echo "</th><th>player</th><th><th>team</th>\n";
         echo "</tr>\n";
         foreach ($result as $players) {
             echo "<tr>\n";
@@ -18,10 +19,9 @@
             echo "<td>" . $players["name"] . "</td>\n";
             echo "<td>" ."<td>".$players["team"] . "</td>\n";
             echo "<td><td>\n";
-            echo "<a href=edit.php?id=" . $players["id"] . ">update</a>";
+            echo "<button><a href=edit.php?id=" . $players["id"] . ">update</a></button>";
             echo "<td><td>";
-            echo "<a href=delete.php?id=" . $players["id"] . ">delete</a>\n";
-            echo "</td>\n";
+            echo "<button><a href=delete.php?id=" . $players["id"] . ">delete</a></button>\n";
             echo "</tr>\n";
         }
         echo "</table>\n";
@@ -30,6 +30,6 @@
             <a href="index.php">go back to index</a>
         </p>
     </font></div>
-</form>
-</div>
+        </form>
+    </div>
 </font></html>

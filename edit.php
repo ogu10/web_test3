@@ -32,8 +32,6 @@ try {$dbh = new PDO("mysql:host=localhost; dbname=jobins; charset=utf8", "root",
                 <input type="text" name="name" placeholder="name" value="<?php if (!empty($result['name'])) echo(htmlspecialchars($result['name'], ENT_QUOTES, 'UTF-8'));?>">
             <br>
                 <input type="text" name="team" placeholder="team" value="<?php if (!empty($result['team'])) echo(htmlspecialchars($result['team'], ENT_QUOTES, 'UTF-8'));?>">
-            <br>
-                <input type="int" name="age" placeholder="age" value="<?php if (!empty($result['age'])) echo(htmlspecialchars($result['age'], ENT_QUOTES, 'UTF-8'));?>">
             </p>
             <br>
             <input type="submit" value="Change!">

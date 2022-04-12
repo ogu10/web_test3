@@ -2,22 +2,14 @@ table{
   width: 60%;
   border-collapse:separate;
   background-color:white;
-  border-spacing: 0;
-}
-
+  border-spacing: 0;}
 table th:first-child{
-  border-radius: 5px 0 0 0;
-}
-
+  border-radius: 5px 0 0 0;}
 table th:last-child{
   border-radius: 0 5px 0 0;
-  border-right: 1px solid #3c6690;
-}
-
+  border-right: 1px solid #3c6690;}
 table tr:nth-child(odd){
-  background-color: lightgray;
-}
-
+  background-color: lightgray;}
 table th{
   text-align: center;
   color:white;
@@ -26,26 +18,38 @@ table th{
   border-top: 1px solid #3c6690;
   border-bottom: 1px solid #3c6690;
   box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
-  padding: 10px 0;
-}
-
-table td{
-  text-align: center;
+  padding: 10px 0;}
+table td{text-align: center;
   border-left: 1px solid #a8b7c5;
   border-bottom: 1px solid #a8b7c5;
   border-top:none;
   box-shadow: 0px -3px 5px 1px #eee inset;
-  padding: 10px 0;
-}
+  padding: 10px 0;}
+table td:last-child{  border-right: 1px solid #a8b7c5;}
+table tr:last-child td:first-child {  border-radius: 0 0 0 5px;}
+table tr:last-child td:last-child {border-radius: 0 0 5px 0;}
 
-table td:last-child{
-  border-right: 1px solid #a8b7c5;
+button {
+  /* ブラウザ特有のスタイルを無効に */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  /* 整える */
+  margin: 0.5em 0.5; /* 前後の隙間 */
+  padding: 0.6em 1em; /* 塗りの余白 */
+  font-size: 1em; /* フォントサイズ */
+  background-color: deepskyblue; /* 背景色 */
+  color: #FFF; /* テキストカラー */
+  cursor: pointer; /* カーソルを指マークに */
+  border-radius: 3px; /* 角の丸み */
+  border: 0; /* 枠線を消す */
+  transition: 0.3s; /* ホバーの変化を滑らかに */}
+/* ホバー時（カーソルをのせた時）の見た目 */
+button:hover {
+  background-color: lime; /* 背景色 */
 }
-
-table tr:last-child td:first-child {
-  border-radius: 0 0 0 5px;
-}
-
-table tr:last-child td:last-child {
-  border-radius: 0 0 5px 0;
+button[disabled] {
+  color: darkred;
+  background: black;
+  cursor: not-allowed;
 }
