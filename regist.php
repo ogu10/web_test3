@@ -32,7 +32,7 @@ $pdo = NULL;//データベース接続を解除
     </body>
     <br>
     <p>
-        <a href="index.php">go back to index</a><br><br>
+        <a href="submit.php">go back to index</a><br><br>
         <a href="players_list.php">go to answer list!</a>
     </p>
 

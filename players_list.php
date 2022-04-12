@@ -27,7 +27,7 @@
         echo "</table>\n";
         ?>
         <p>
-            <a href="index.php">go back to index</a>
+            <a href="submit.php">go back to index</a>
         </p>
     </font></div>
         </form>

@@ -1,7 +1,9 @@
 <?php
     $dbh = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');
+    $pdo = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');
 
     $sql = "SELECT
+    players.id AS id,
     players.No AS No,
     players.name AS name,
     leagues.league_name AS league,
@@ -12,13 +14,15 @@
     ON leagues.id = players.league_id
     INNER JOIN league_power
     ON leagues.id = league_power.id
-    ORDER BY Length(strongness) DESC LIMIT 16";
+    ORDER BY Length(strongness) DESC LIMIT 12";
     $stmt = ($dbh->prepare($sql));
     $stmt->execute();
-    
+    $id_max = intval($pdo->query("SELECT max(id) FROM players")->fetchColumn());
+
     $players_country = array();
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $players_country[] = array(
+            'id' => $row['id'],
             'No' => $row['No'],
             'name' => $row['name'],
             'league' => $row['league'],
@@ -30,7 +34,7 @@
 <head>
     <link rel="stylesheet" href="style.css"></head>
 <body background="images/11_<?php echo rand(5,6); ?>.jpg"></body>
-<div align='center'><br><br><br><br><br><br>
+<div align='center'><br><br>
 
     <table class="players=country">
     <tr>
@@ -45,7 +49,9 @@
             <td>
                 　<?php echo $value['No'] ?></td>
             <td>
-                　<?php echo $value['name'] ?></td>
+                　<?php echo $value['name'] ?>
+                <?php
+                if ($value["id"]== $id_max){echo "<font color='red'>"."new!"."</font>";} ?></td>
             <td>
                 　<?php echo $value['league'] ?></td>
             <td>
@@ -58,7 +64,7 @@
     <?php endforeach ?>
 </table>
     <p>
-        <a href="index.php">go back to index</a>
+        <a href="submit.php">go back to index</a>
     </p>
 </div>
 </HTML>

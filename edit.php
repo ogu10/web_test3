@@ -39,7 +39,7 @@ try {$dbh = new PDO("mysql:host=localhost; dbname=jobins; charset=utf8", "root",
         </form>
     </div>
     <br><h2>
-        <a href="index.php"><i class="fa-regular fa-futbol"></i> Go to Index</a><br>
+        <a href="submit.php"><i class="fa-regular fa-futbol"></i> Go to Index</a><br>
         <a href="players_list.php"><i class="fa-solid fa-list"></i> Answer list</a>
     </h2>
     </body>

@@ -22,7 +22,7 @@ try {
   </head>
   <body>
   <p>
-      <a href="index.php">go back to index</a>
+      <a href="submit.php">go back to index</a>
   </p>
   <p>
       <a href="players_list.php">go to answer list</a>
