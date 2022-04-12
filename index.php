@@ -12,6 +12,7 @@ if(isset($_POST['datapost'])) {
 ?>
 <html lang="ja">
 <head>
+    <script src="/web_test3/function.js"></script>
 <!--    <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
     <script>
         function func() {
