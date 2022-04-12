@@ -12,16 +12,16 @@ if(isset($_POST['datapost'])) {
 ?>
 <html lang="ja">
 <head>
-    <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
+<!--    <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
     <script>
         function func() {
             const name = document.getElementById("name");
             const button = document.getElementById("button");
-            if (name.value && name.value.length {
+            if (name.value= 0) {
                 button.disable = true;
             } else {button.disabled = false;}
         }
-    </script>
+    </script>-->
 </head>
 <font color='white'><div align='center'><br>
         <body background="images/2_<?php echo rand(1,3); ?>.jpg"></body>
@@ -29,12 +29,12 @@ if(isset($_POST['datapost'])) {
             <meta charset="UTF-8">
             <title>PHP_TEST</title>
         </head>
-        <h1>Welcome to JoBins Test3!</h1>
+        <h1>Welcome to JoBins Test4!</h1>
         </p>add your </font><font color='red'>favorite Soccer player </font><font color='white'>below!</p></font>
 
 <form action="" method="post">
     <input type="int" name="No" placeholder="No"><br>
-    <input type="text" id="name" name="name" placeholder="name" oninput="func()"><br>
+    <input type="text" id="name" name="name" placeholder="name" oninput="checkName()"><br>
     <input type="text" name="team" placeholder="team"><br><br><font color='Lime'>
     <input type="radio" name="league_id" value="1">Premium League<br>
     <input type="radio" name="league_id" value="2">Serie A<br>
@@ -42,7 +42,7 @@ if(isset($_POST['datapost'])) {
     <input type="radio" name="league_id" value="4">La Liga<br>
     <input type="radio" name="league_id" value="5">Ligue 1</font>
     <br><br>
-    <button type="submit" name="datapost" id="button" style="cursor:pointer">
+    <button type="submit" name="datapost" id="button" style="cursor:pointer" disabled>
         <i class="fa-regular fa-futbol"></i> Kick off！</button>
     <br><br>
     <p><h1><font color='Green'><div style="padding: 10px; margin-bottom: 10px; width:300px; border: 5px double #333333; background-color: #e0ff80;">
