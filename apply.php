@@ -15,8 +15,8 @@ if(isset($_POST['datapost'])) {
     <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
     </head>
     <font color='white'><div align='center'><br>
-    <a href="submit.php">go to index</a><br><br>
-                session ID is <font color='yellow'>
+            <a href="submit.php">go to index</a><br><br>
+            session ID is <font color='yellow'>
                 <?php echo($_COOKIE['PHPSESSID'] );?></font><br>
             <body background="images/2_<?php echo rand(1,3); ?>.jpg"></body>
             <head>
@@ -25,15 +25,11 @@ if(isset($_POST['datapost'])) {
             </head>
             <h1>Welcome to JoBins Test5!</h1>
 
-    <form action="regist2.php" method="post">
-        <input type="text" id="name" name="name" placeholder="name" oninput="checkName()"><br>
-        <input type="password" name="pass" placeholder="pass"><br>
-        <br><br>
-        <button type="submit" name="datapost" id="button" disabled>
-            <i class="fa-regular fa-futbol"></i> log in！</button></form>
-
-    <p> if you are not registered, <br><br>
-        <a href="apply.php"><button type="button"><i class="fa-solid fa-pen-to-square"></i> Apply!</button></a>
-    </p>
-</div>
-</html>
+            <form action="regist2.php" method="post">
+                <input type="text" id="name" name="name" placeholder="name" oninput="checkName()"><br>
+                <input type="password" name="pass" placeholder="pass"><br>
+                <br><br>
+                <button type="submit" name="datapost" id="button" disabled>
+                    <i class="fa-solid fa-pen-to-square"></i> Apply！</button>
+        </div>
+        </html>
