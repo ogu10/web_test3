@@ -4,7 +4,7 @@ body{
 }
 
 .chess_board{
-    margin-top: 80px;
+    margin-top: 85px;
     margin-left:100px;
     border-collapse:collapse;
     background-color:white;}

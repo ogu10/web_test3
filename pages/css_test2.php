@@ -7,7 +7,6 @@
 </head>
 
 <body background="../images/01.jpg">
-<br>
     <table class="chess_board" width="450" height="450">
         <?php
         for($row=1;$row<=11;$row++)
