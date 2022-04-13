@@ -6,22 +6,15 @@
     <link rel="stylesheet" href="../css/test.css">
 </head>
 
-<body class="bg-home-page">
-
-<br><br><br><br>
-<div align='center'>
-    <table class="chess_board" width="640" height="640">
-        <tbody>
-        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        </tbody>
+<body background="../images/01.jpg">
+<br>
+    <table class="chess_board" width="450" height="450">
+        <?php
+        for($row=1;$row<=11;$row++)
+        {echo "<tr>";
+            for ($col=1;$col<=11;$col++)
+                {echo "<td></td>";}
+        echo "</tr>";} ?>
     </table>
-</div>
 </body>
 </html>

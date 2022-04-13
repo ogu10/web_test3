@@ -1,13 +1,19 @@
+body{
+    background-size: cover;
+    background-position: 50%;
+}
+
 .chess_board{
-    width: 60%;
+    margin-top: 80px;
+    margin-left:100px;
     border-collapse:collapse;
-    background-color:darkred;}
+    background-color:white;}
 table tr:nth-child(odd) td:nth-child(odd){
-    background-color: #FEFDBD;}
+    background-color: red;}
 table tr:nth-child(even) td:nth-child(even){
-    background-color: #FEFDBD;}
+    background-color: orangered;}
 td {
-    border-color: black;
+    border-color: orangered;
     border-width: 1px;
     border-style: solid;
     padding: 2px;
