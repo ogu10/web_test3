@@ -1,3 +1,7 @@
+body{
+  background: cover;
+}
+
 table{
   width: 60%;
   border-collapse:separate;
@@ -53,3 +57,20 @@ button[disabled] {
   background: black;
   cursor: not-allowed;
 }
+
+anim-box {
+  background: linear-gradient(to right, #362ae0 0%,#3b79cc 50%,#42d3ed 100%);
+  border-radius: 5px;
+  max-width: 400px;
+  height: 250px;}
+anim-box.slidein.is-animated {
+  animation: slideIn 1s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;}
+@keyframes slideIn {
+  0% {
+    transform: translateX(180px);
+    opacity: 0;}
+  100% {transform: translateX(0);}
+  40%,100% {opacity: 1;}
+}
+
+

@@ -16,5 +16,5 @@ $stmt -> bindValue(':username', $name, PDO::PARAM_STR);//登録する文字の�
 $stmt -> bindValue(':pass', $password, PDO::PARAM_STR);//登録する文字の型を固定
 $stmt -> execute();//データベースの登録を実行
 $pdo = NULL;//データベース接続を解除
-header('Location: submit.php');
+header('Location: index.php');
 ?>

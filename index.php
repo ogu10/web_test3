@@ -15,10 +15,10 @@ if(isset($_POST['datapost'])) {
     <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
     </head>
     <font color='white'><div align='center'><br>
-    <a href="submit.php">go to index</a><br><br>
+<!--    <a href="submit.php">go to index</a>--><br><br>
                 session ID is <font color='yellow'>
                 <?php echo($_COOKIE['PHPSESSID'] );?></font><br>
-            <body background="images/2_<?php echo rand(1,3); ?>.jpg"></body>
+            <body background="images/2_<?php echo rand(1,3); ?>.jpg">
             <head>
                 <meta charset="UTF-8">
                 <title>PHP_TEST_no_5</title>
@@ -30,10 +30,10 @@ if(isset($_POST['datapost'])) {
         <input type="password" name="pass" placeholder="pass"><br>
         <br><br>
         <button type="submit" name="datapost" id="button" disabled>
-            <i class="fa-regular fa-futbol"></i> log in！</button></form>
+            <i class="fa-regular fa-futbol"></i> log in！</button></form><br>
 
-    <p> if you are not registered, <br><br>
+        <p> if you are not registered, <br>
         <a href="apply.php"><button type="button"><i class="fa-solid fa-pen-to-square"></i> Apply!</button></a>
     </p>
-</div>
+</div></body>
 </html>
