@@ -13,7 +13,7 @@ if(isset($_POST['datapost'])) {
     <head>
         <link rel="stylesheet" href="style.css"></head>
     <div class="anim-box">
-        <body background="images/2_<?php echo rand(1,3); ?>.jpg">
+        <body background="images/0_7.jpg">
     </div>
     <script src="/web_test3/function.js"></script>
     <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>

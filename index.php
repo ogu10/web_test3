@@ -18,7 +18,7 @@ if(isset($_POST['datapost'])) {
 <!--    <a href="submit.php">go to index</a>--><br><br>
                 session ID is <font color='yellow'>
                 <?php echo($_COOKIE['PHPSESSID'] );?></font><br>
-            <body background="images/2_<?php echo rand(1,3); ?>.jpg">
+            <body background="images/3_<?php echo rand(1,3); ?>.jpg">
             <head>
                 <meta charset="UTF-8">
                 <title>PHP_TEST_no_5</title>
@@ -32,7 +32,7 @@ if(isset($_POST['datapost'])) {
         <button type="submit" name="datapost" id="button" disabled>
             <i class="fa-regular fa-futbol"></i> log in！</button></form><br>
 
-        <p> if you are not registered, <br>
+            <p> if you are not registered, <br>
         <a href="apply.php"><button type="button"><i class="fa-solid fa-pen-to-square"></i> Apply!</button></a>
     </p>
 </div></body>
