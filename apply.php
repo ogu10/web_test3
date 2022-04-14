@@ -10,7 +10,7 @@ if(isset($_POST['datapost'])) {header('Location: regist2.php');} ?>
     <div class="anim-box">
         <body background="images/0_7.jpg">
     </div>
-    <script src="/web_test3/function.js"></script>
+    <script src="/web_test3/pages/function.js"></script>
     <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
     </head>
     <font color='white'><div align='center'><br><br><br>

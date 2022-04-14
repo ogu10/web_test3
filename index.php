@@ -18,7 +18,7 @@ unset($_SESSION["user_name"] );}
 <div lang="ja">
     <head>
         <link rel="stylesheet" href="style.css"></head>
-    <script src="/web_test3/function.js"></script>
+    <script src="/web_test3/pages/function.js"></script>
     <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
     </head>
     <font color='white'><div align='center'><br>
