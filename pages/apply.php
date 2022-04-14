@@ -21,12 +21,12 @@ if(isset($_POST['datapost'])) {header('Location: regist2.php');} ?>
                 <title>PHP_TEST_no_5</title>
             </head>
             <h1>Welcome to JoBins Test5!</h1><br><br><br>
-            <form action="regist2.php" method="post">
+            <form action="../regist2.php" method="post">
                 <input type="text" id="name" name="name" placeholder="name" oninput="checkName()"><br>
                 <input type="password" name="pass" placeholder="pass"><br>
                 <br><br>
                 <button type="submit" name="datapost" id="button" disabled>
                         <i class="fa-solid fa-pen-to-square"></i> Apply！</button><br><br><br>
-                <font color='white'>or<br>back to <a href="index.php">log in page</a>
+                <font color='white'>or<br>back to <a href="../index.php">log in page</a>
         </div></font>
 </html>

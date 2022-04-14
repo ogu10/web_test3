@@ -16,7 +16,13 @@ if(isset($_POST['datapost'])) {
     <script src="/web_test3/pages/function.js"></script>
     <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
     </head>
-    <font color='white'><div align='center'><br>
+    <font color='white'>
+        you are <?php echo "<font color='#ff1493'>".$_SESSION['user_name']."</font>"; ?>
+        <div align="right">
+        <a href="pages/log_out.php">
+        <button type="button" name="out_button" id="button">
+            <i class="fa-solid fa-right-from-bracket"></i> log out</button></a></div>
+        <div align='center'><br>
             <body background="images/0_<?php echo rand(1,1); ?>.jpg"></body>
             <head>
                 <meta charset="UTF-8">
@@ -35,7 +41,7 @@ if(isset($_POST['datapost'])) {
             <input type="radio" name="league_id" value="4">La Liga<br>
             <input type="radio" name="league_id" value="5">Ligue 1</font>
         <br><br>
-        <button type="submit" name="datapost" id="button" disabled>
+        <button type="submit" name="datapost" id="button" class="black_button" disabled>
             <i class="fa-regular fa-futbol"></i> Kick off！</button>
         <p><font color='Green'></font><h1>
             <a href='players_list.php'><i class="fa-solid fa-list"></i> Answer list</a></h1></form>
@@ -46,6 +52,5 @@ if(isset($_POST['datapost'])) {
 </html>
 
 <?php
-session_start();
 if(!isset($_SESSION["user_name"])) {
     header("Location: pages/ban.php");} ?>

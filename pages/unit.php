@@ -1,3 +1,6 @@
+<font color="white">
+<?php session_start() ?>
+    you are <?php echo "</font>"."<font color='#ff1493'>".$_SESSION['user_name']."</font>"; ?>
 <?php
     $dbh = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');
     $pdo = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');
@@ -33,7 +36,7 @@
 <HTML>
 <head>
     <link rel="stylesheet" href="style.css"></head>
-<body background="images/11_<?php echo rand(5,6); ?>.jpg"></body>
+<body background="images/11_<?php echo rand(6,6); ?>.jpg"></body>
 <div align='center'><br><br>
 
     <table class="players=country">
@@ -68,3 +71,7 @@
     </p>
 </div>
 </HTML>
+
+<?php
+if(!isset($_SESSION["user_name"])) {
+    header("Location: pages/ban.php");} ?>

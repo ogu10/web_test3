@@ -1,6 +1,10 @@
-<html lang="ja"><br><br><br><br>
-<body background="images/1_4.jpg">
-<font color='#e0ff80'><div align='center'><br>
+<html lang="ja">
+<font color='white'>
+<?php session_start() ?>
+you are <?php echo "</font>"."<font color='#ff1493'>".$_SESSION['user_name']."</font>"; ?>
+<body background="images/1_4.jpg"><br><br><br><br>
+<font color='#e0ff80'>
+    <div align='center'><br>
 <div style="padding: 10px; margin-bottom: 10px; width:380px; border: 5px double #333333; background-color: white;">
     <font color=blue>
         <?php
@@ -35,6 +39,5 @@
 </font></html>
 
 <?php
-session_start();
 if(!isset($_SESSION["user_name"])) {
     header("Location: pages/ban.php");} ?>
