@@ -19,9 +19,9 @@
             echo "<td>" . $players["name"] . "</td>\n";
             echo "<td>" ."<td>".$players["team"] . "</td>\n";
             echo "<td><td>\n";
-            echo "<button><a href=edit.php?id=" . $players["id"] . ">update</a></button>";
+            echo "<button><a href=pages/edit.php?id=" . $players["id"] . ">update</a></button>";
             echo "<td><td>";
-            echo "<button><a href=delete.php?id=" . $players["id"] . ">delete</a></button>\n";
+            echo "<button><a href=pages/delete.php?id=" . $players["id"] . ">delete</a></button>\n";
             echo "</tr>\n";
         }
         echo "</table>\n";

@@ -41,7 +41,7 @@ if(isset($_POST['datapost'])) {
             <a href='players_list.php'><i class="fa-solid fa-list"></i> Answer list</a></h1></form>
     </p>
     <p>
-        <a href="unit.php">go to unit!</a>
+        <a href="pages/unit.php">go to unit!</a>
     </p></div>
 </html>
 
