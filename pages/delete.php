@@ -7,7 +7,7 @@ try {
     $stmt = $dbh->prepare('DELETE FROM players WHERE id = :id');
 
     $stmt->execute(array(':id' => $_GET["id"]));
-    header('Location: players_list.php');
+    header('Location: ../players_list.php');
 } catch (Exception $e) {
           echo 'エラーが発生しました。:' . $e->getMessage();
 }

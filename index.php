@@ -12,8 +12,6 @@ $error_message = "you failed...";
 if($error_message) {echo "<font color='white'>".$error_message."</font>";}
 unset($_SESSION["user_name"] );}
 }
-/*header('Location: failed.php')*/
-/*if($error_message) {echo $error_message;}*/
 ?>
 <div lang="ja">
     <head>

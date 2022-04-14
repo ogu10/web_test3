@@ -64,7 +64,7 @@
     <?php endforeach ?>
 </table>
     <p>
-        <a href="submit.php">go back to index</a>
+        <a href="../submit.php">go back to index</a>
     </p>
 </div>
 </HTML>
