@@ -7,7 +7,7 @@ if(isset($_POST['datapost'])) {
     $_SESSION['team'] = $_POST['team'];
     $_SESSION['name'] = $_POST['name'];
     $_SESSION['league_id'] = $_POST['league_id'];
-    header('Location: regist.php');
+    header('Location: pages/regist.php');
 }
 ?>
 <div lang="ja">

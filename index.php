@@ -40,7 +40,7 @@ unset($_SESSION["user_name"] );}
             <i class="fa-regular fa-futbol"></i> log in！</button></form><br>
 
             <p> if you are not registered, <br>
-        <a href="apply.php"><button type="button"><i class="fa-solid fa-pen-to-square"></i> Apply!</button></a>
+        <a href="pages/apply.php"><button type="button"><i class="fa-solid fa-pen-to-square"></i> Apply!</button></a>
     </p>
 </div></body>
 </html>
