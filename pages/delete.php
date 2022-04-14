@@ -3,7 +3,7 @@
 
 try {
 
-    $dbh = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');
+    include 'connection.php';
     $stmt = $dbh->prepare('DELETE FROM players WHERE id = :id');
 
     $stmt->execute(array(':id' => $_GET["id"]));

@@ -7,8 +7,7 @@
         <button type="button" name="out_button" id="button">
             <i class="fa-solid fa-right-from-bracket"></i> log out</button></a></div>
 <?php
-    $dbh = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');
-    $pdo = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');
+    include 'connection.php';
 
     $sql = "SELECT
     players.id AS id,
@@ -25,7 +24,7 @@
     ORDER BY Length(strongness) DESC LIMIT 12";
     $stmt = ($dbh->prepare($sql));
     $stmt->execute();
-    $id_max = intval($pdo->query("SELECT max(id) FROM players")->fetchColumn());
+    $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
 
     $players_country = array();
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
