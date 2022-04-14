@@ -2,12 +2,7 @@
 ini_set('display_errors',1);//画面にエラーを表示
 error_reporting(E_ALL);//全ての種類のエラーを表示
 session_start();
-if(isset($_POST['datapost'])) {
-    $_SESSION['username'] = $_POST['name'];
-    $_SESSION['pass'] = $_POST['pass'];
-    header('Location: regist2.php');
-}
-?>
+if(isset($_POST['datapost'])) {header('Location: regist2.php');} ?>
 <html>
 <div lang="ja">
     <head>

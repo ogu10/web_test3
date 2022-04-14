@@ -15,15 +15,6 @@ if(isset($_POST['datapost'])) {
         <link rel="stylesheet" href="style.css">
     <script src="/web_test3/function.js"></script>
     <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
-    <!--    <script>
-            function func() {
-                const name = document.getElementById("name");
-                const button = document.getElementById("button");
-                if (name.value= 0) {
-                    button.disabled = true;
-                } else {button.disabled = false;}
-            }
-        </script>-->
     </head>
     <font color='white'><div align='center'><br>
             <body background="images/0_<?php echo rand(1,1); ?>.jpg"></body>

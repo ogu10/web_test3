@@ -33,3 +33,8 @@
         </form>
     </div>
 </font></html>
+
+<?php
+session_start();
+if(!isset($_SESSION["user_name"])) {
+    header("Location: pages/ban.php");} ?>

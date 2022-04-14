@@ -3,14 +3,14 @@
 error_reporting(E_ALL);//全ての種類のエラーを表示*/
 session_start();
 $error_message = "";
-/*$pdo = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');*/
+$pdo = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');
 if(isset($_POST['login'])) {
     if($_POST['name'] == 'user' && $_POST['pass'] == 'pass'){
         $_SESSION["user_name"] = $_POST["name"];
-        header('Location: submit.php');}
+        header('Location: submit.php');}else{
 $error_message = "you failed...";
 if($error_message) {echo "<font color='white'>".$error_message."</font>";}
-unset($_SESSION["user_name"] );
+unset($_SESSION["user_name"] );}
 }
 /*header('Location: failed.php')*/
 /*if($error_message) {echo $error_message;}*/

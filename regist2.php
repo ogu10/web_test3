@@ -3,8 +3,8 @@
 
 ini_set('display_errors',1);
 error_reporting(E_ALL);
-var_dump($_POST['name']);
-var_dump($_POST['pass']);
+/*var_dump($_POST['name']);
+var_dump($_POST['pass']);*/
 
 session_start();
 $pdo = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');
