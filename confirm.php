@@ -1,8 +1,9 @@
 <?php
 session_start();
 include 'pages/connection.php';
-    $stmt = $dbh->prepare("SELECT * FROM passwords WHERE username = :name");
-    $stmt->bindParam(':name', $_SESSION['name']);
+    $name = $_SESSION['name'];
+    $pass = $_SESSION['pass'];
+    $stmt = $dbh->prepare("SELECT * FROM passwords WHERE username = '$name' and pass = '$pass'");
     $stmt->execute();
 
     if($rows = $stmt->fetch()) {
