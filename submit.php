@@ -26,12 +26,12 @@ if(isset($_POST['datapost'])) {
         </script>-->
     </head>
     <font color='white'><div align='center'><br>
-            <body background="images/2_<?php echo rand(1,3); ?>.jpg"></body>
+            <body background="images/0_<?php echo rand(1,1); ?>.jpg"></body>
             <head>
                 <meta charset="UTF-8">
                 <title>PHP_TEST</title>
             </head>
-            <h1>Welcome to JoBins Test4!</h1>
+            <h1>Your login has succeeded!</h1>
             </p>add your </font><font color='red'>favorite Soccer player </font><font color='white'>below!</p></font>
 
     <form action="" method="post">
@@ -53,3 +53,8 @@ if(isset($_POST['datapost'])) {
         <a href="unit.php">go to unit!</a>
     </p></div>
 </html>
+
+<?php
+session_start();
+if(!isset($_SESSION["user_name"])) {
+    header("Location: pages/ban.php");} ?>

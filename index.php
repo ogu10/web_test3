@@ -1,12 +1,19 @@
 <?php
-ini_set('display_errors',1);//画面にエラーを表示
-error_reporting(E_ALL);//全ての種類のエラーを表示
+/*ini_set('display_errors',1);//画面にエラーを表示
+error_reporting(E_ALL);//全ての種類のエラーを表示*/
 session_start();
-if(isset($_POST['datapost'])) {
-    $_SESSION['username'] = $_POST['name'];
-    $_SESSION['pass'] = $_POST['pass'];
-    header('Location: regist2.php');
+$error_message = "";
+/*$pdo = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');*/
+if(isset($_POST['login'])) {
+    if($_POST['name'] == 'user' && $_POST['pass'] == 'pass'){
+        $_SESSION["user_name"] = $_POST["name"];
+        header('Location: submit.php');}
+$error_message = "you failed...";
+if($error_message) {echo "<font color='white'>".$error_message."</font>";}
+unset($_SESSION["user_name"] );
 }
+/*header('Location: failed.php')*/
+/*if($error_message) {echo $error_message;}*/
 ?>
 <div lang="ja">
     <head>
@@ -25,11 +32,11 @@ if(isset($_POST['datapost'])) {
             </head>
             <h1>Welcome to JoBins Test5!</h1>
 
-    <form action="regist2.php" method="post">
+    <form action="" method="POST">
         <input type="text" id="name" name="name" placeholder="name" oninput="checkName()"><br>
         <input type="password" name="pass" placeholder="pass"><br>
         <br><br>
-        <button type="submit" name="datapost" id="button" disabled>
+        <button type="submit" name="login" id="button" disabled>
             <i class="fa-regular fa-futbol"></i> log in！</button></form><br>
 
             <p> if you are not registered, <br>

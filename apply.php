@@ -32,7 +32,6 @@ if(isset($_POST['datapost'])) {
                 <br><br>
                 <button type="submit" name="datapost" id="button" disabled>
                         <i class="fa-solid fa-pen-to-square"></i> Apply！</button><br><br><br>
-                <font color='black'>or </font><br><font color='white'>
-                go back to <a href="index.php">log in page</a>
-        </div></font><
+                <font color='white'>or<br>back to <a href="index.php">log in page</a>
+        </div></font>
 </html>
