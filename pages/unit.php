@@ -1,6 +1,11 @@
 <font color="white">
 <?php session_start() ?>
     you are <?php echo "</font>"."<font color='#ff1493'>".$_SESSION['user_name']."</font>"; ?>
+<script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
+<div align="right">
+    <a href="pages/log_out.php">
+        <button type="button" name="out_button" id="button">
+            <i class="fa-solid fa-right-from-bracket"></i> log out</button></a></div>
 <?php
     $dbh = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');
     $pdo = new PDO('mysql:host=localhost;dbname=jobins;charset=utf8','root','');

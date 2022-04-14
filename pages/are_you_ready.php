@@ -1,7 +1,7 @@
 <?php
 session_start(); ?><br>
 Are you <?php echo "<font color='#ff1493'>".$_SESSION['user_name']."</font>"; ?>?<br>
-If you so, go submit page!
+If you so, you go submit page!
 <a href="../submit.php">
     <button type="button" name="out_button" id="button">Go!</button></a>
 

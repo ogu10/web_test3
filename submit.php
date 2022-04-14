@@ -17,7 +17,7 @@ if(isset($_POST['datapost'])) {
     <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
     </head>
     <font color='white'>
-        you are <?php echo "<font color='#ff1493'>".$_SESSION['user_name']."</font>"; ?>
+        you are <?php echo "<font color='#ff1493'>".$_SESSION['user_name']."</font>"; ?><br>
         <div align="right">
         <a href="pages/log_out.php">
         <button type="button" name="out_button" id="button">
@@ -41,7 +41,7 @@ if(isset($_POST['datapost'])) {
             <input type="radio" name="league_id" value="4">La Liga<br>
             <input type="radio" name="league_id" value="5">Ligue 1</font>
         <br><br>
-        <button type="submit" name="datapost" id="button" class="black_button" disabled>
+        <button type="submit" name="datapost" id="button" class="black_button" <!--disabled-->>
             <i class="fa-regular fa-futbol"></i> Kick off！</button>
         <p><font color='Green'></font><h1>
             <a href='players_list.php'><i class="fa-solid fa-list"></i> Answer list</a></h1></form>
