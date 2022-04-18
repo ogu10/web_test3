@@ -13,7 +13,7 @@ you are <?php echo "</font>"."<font color='#ff1493'>".$_SESSION['user_name']."</
 <div style="padding: 10px; margin-bottom: 10px; width:380px; border: 5px double #333333; background-color: white;">
     <font color=blue>
         <?php
-        include 'connection.php';
+        include 'pages/connection.php';
         $stmt = $dbh->query('SELECT * FROM players ORDER BY `players`.`id` DESC LIMIT 16');
         $result = 0;
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
