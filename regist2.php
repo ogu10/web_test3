@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 var_dump($_POST['pass']);*/
 
 session_start();
-include 'connection.php';
+include 'pages/connection.php';
 
 $name = $_POST['name'];//ユーザーから受け取った値を変数に入れる
 $password = $_POST['pass'];//ユーザーから受け取った値を変数に入れる
