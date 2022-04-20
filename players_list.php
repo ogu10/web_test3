@@ -24,10 +24,7 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
             $sort= $_REQUEST['sort'];
         }else{
             $column= "name";
-            $sort= "ASC";
-        }
-
-
+            $sort= "ASC";}
 /*        {$stmt = $dbh->query('SELECT * FROM players ORDER BY length(`players`.`team`) DESC,`No` ASC LIMIT 16');}*/
         $stmt = $dbh->query('SELECT * FROM players ORDER BY '.$column.' '.$sort.', Length(`team`) LIMIT 16');
         $result = 0;
@@ -54,16 +51,16 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
 <form action="pages/search.php" method="POST">
     <input type="text" id="name" name="search_word" placeholder="search name">
     <button type="submit" name="login" id="button" class="button3">
-        <i class="fa-regular fa-futbol"></i> Search it！</button></form>
+        <i class="fa-regular fa-futbol"></i> Search it！</button>
+    <div align="right">
+    <select name="sort" onChange="location.href=value;">
+        <option value="" selected>えらべ！</option>
+        <option value="players_list.php?sort=ASC&column=id">id up!</option>
+        <option value="players_list.php?sort=DESC&column=id">id down!</option>
+        <option value="players_list.php?sort=ASC&column=Length(team)">team up!</option>
+        <option value="players_list.php?sort=DESC&column=Length(team)">team down!</option>
+    </select></div>
     <table class="players=country">
-    <div align='right'>
-        <select name="sort" onChange="location.href=value;">
-            <option value="" selected>えらべ！</option>
-            <option value="players_list.php?sort=ASC&column=id">id up!</option>
-            <option value="players_list.php?sort=DESC&column=id">id down!</option>
-            <option value="players_list.php?sort=ASC&column=Length(team)">team up!</option>
-            <option value="players_list.php?sort=DESC&column=Length(team)">team down!</option>
-        </select>
     </div>
         <tr>
             <th>No.<a href="players_list.php?sort=ASC&column=No">↓</a><a href="players_list.php?sort=DESC&column=No">↑</a></th>
