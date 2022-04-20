@@ -51,7 +51,7 @@ button {
   transition: 0.2s; /* ホバーの変化を滑らかに */}
 /* ホバー時（カーソルをのせた時）の見た目 */
 button:hover {
-  background-color: darkred; /* 背景色 */
+  background-color: lime; /* 背景色 */
 }
 button[disabled] {
   color: darkred;

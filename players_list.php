@@ -16,12 +16,20 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
     <font color=blue>
         <?php
         include 'pages/connection.php';
-        /*$sort = 0;
-        $sort = $_POST['sort'];
-        if($sort == 'new'){
-        $stmt = $dbh->query('SELECT * FROM players ORDER BY `No` ASC LIMIT 16');}
-        else*/
-        {$stmt = $dbh->query('SELECT * FROM players ORDER BY length(`players`.`team`) DESC,`No` ASC LIMIT 16');}
+        // check if column exists
+        if(isset($_REQUEST["column"]) && isset($_REQUEST["sort"])){
+            // extract if exist from request array
+            $column = $_REQUEST["column"];
+            // set column and sort variable
+            $sort= $_REQUEST['sort'];
+        }else{
+            $column= "name";
+            $sort= "ASC";
+        }
+
+
+/*        {$stmt = $dbh->query('SELECT * FROM players ORDER BY length(`players`.`team`) DESC,`No` ASC LIMIT 16');}*/
+        $stmt = $dbh->query('SELECT * FROM players ORDER BY '.$column.' '.$sort.', Length(`team`) LIMIT 16');
         $result = 0;
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
@@ -50,19 +58,19 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
     <table class="players=country">
     <div align='right'>
         <select name="sort" onChange="location.href=value;">
-            <option value="name" selected>えらべ！</option>
-            <option value="new.php">new one !</option>
-            <option value="new.php">new one !</option>
-            <option value="new.php">new one !</option>
-            <option value="new.php">new one !</option>
+            <option value="" selected>えらべ！</option>
+            <option value="players_list.php?sort=ASC&column=id">id up!</option>
+            <option value="players_list.php?sort=DESC&column=id">id down!</option>
+            <option value="players_list.php?sort=ASC&column=Length(team)">team up!</option>
+            <option value="players_list.php?sort=DESC&column=Length(team)">team down!</option>
         </select>
     </div>
         <tr>
-            <th>No.</th>
-            <th>なまえ</th>
-            <th>ちいむ</th>
-            <th>あぷで</th>
-            <th>けす</th>
+            <th>No.<a href="players_list.php?sort=ASC&column=No">↓</a><a href="players_list.php?sort=DESC&column=No">↑</a></th>
+            <th>name<a href="players_list.php?sort=ASC&column=name">↓</a><a href="players_list.php?sort=DESC&column=name">↑</a></th>
+            <th>team<a href="players_list.php?sort=ASC&column=Length(team)">↓</a><a href="players_list.php?sort=DESC&column=Length(team)">↑</a></th>
+            <th>update</th>
+            <th>delete</th>
         </tr>
         　 <?php $x=1; foreach ($result as $value): ?>
             <tr>
