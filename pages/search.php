@@ -8,15 +8,38 @@ if(isset($_REQUEST["column"]) && isset($_REQUEST["sort"])){
     $sort= $_REQUEST['sort'];
 }else{
     $column= "name";
-    $sort= "ASC";}
-if(isset($_SESSION["search_word"]) or isset($_POST["search_word"])){*/
-    $stmt = $dbh->query("SELECT * FROM players WHERE `No` LIKE '%${_POST['search_word']}%'
-                         OR `name` LIKE '%${_POST['search_word']}%' 
-                         OR `team` LIKE '%${_POST['search_word']}%' ORDER BY length(team) DESC, `No`");/*}else{
-    $stmt = $dbh->query('SELECT * FROM players ORDER BY Length(`team`) LIMIT 16');}*/
-$result = 0;
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
+    $sort= "ASC";}*/
+if(isset($_POST["search_word"]) || isset($_POST["team_belongings"]))
+{
+    if(isset($_POST["search_word"]) && isset($_POST["team_belongings"]))
+    {
+        $_SESSION["search_word"] = $_POST["search_word"];
+        $_SESSION["team_belongings"] = $_POST["team_belongings"];
+    }
+    elseif(isset($_POST["search_word"]))
+    {
+        $_SESSION["search_word"] = $_POST["search_word"];
+    }
+    elseif(isset($_POST["team_belongings"]))
+    {
+        $_SESSION["team_belongings"] = $_POST["team_belongings"];
+
+    }
+    $_SESSION['team_belongings'] = '';
+
+        $stmt = $dbh->query("SELECT * FROM players WHERE /*`No` LIKE '%${_SESSION['search_word']}%'
+                             OR */`name` LIKE '%${_SESSION['search_word']}%' 
+                             AND `team` LIKE '%${_SESSION['team_belongings']}%' ORDER BY length(team) DESC, `No`");/*else{
+        echo "href=player_list.php";}*/
+        $teams = $dbh->query('SELECT DISTINCT `team` FROM players ORDER BY Length(`team`) DESC LIMIT 15');
+        $result = 0;
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result_t = 0;
+        $result_t = $teams->fetchAll(PDO::FETCH_ASSOC);$id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
+}
+else{
+    header('Location: ../players_list.php');
+    }
 ?>
 you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</font>"; ?>
 <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
@@ -27,10 +50,12 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
             <i class="fa-solid fa-right-from-bracket"></i> log out</button></a></div>
 <div align='center'>
 <body background="images/1_3.jpg"><br>
-<font color='#e0ff80'>
+<font color='red'>
 <form action="search.php" method="POST">
-    <input type="text" id="name" name="search_word" placeholder="search name">
-    <button type="submit" name="login" id="button" class="button3" value="<?php if (!empty($_SESSION['search_word'])) echo(htmlspecialchars($_SESSION['search_word'], ENT_QUOTES, 'UTF-8'));?>">
+    <input type="text" id="name" name="search_word" placeholder="search name"  value="<?php echo $_SESSION['search_word'] ?>"><br><br><b>
+    　 <?php $x=1; foreach ($result_t as $value): ?><input type="radio" name="team_belongings" value="<?php echo $value['team'] ?>" <?php if($value['team'] == $_SESSION['team_belongings']){echo 'checked';}?>>
+        <?php echo $value['team'] ?><?php if($x % 5 ==0){echo "<br>";}?><?php $x++ ?><?php endforeach ?></b><br><br>
+    <button type="submit" name="login" id="button" class="button3">
         <i class="fa-regular fa-futbol"></i> Search it！</button></form>
 <!--    <div align="right">
         <select name="sort" onChange="location.href=value;">
@@ -43,11 +68,17 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
 <table>
 
     <tr>
-        <th>No.</th>
-        <th>なまえ</th>
-        <th>ちいむ</th>
-        <th>あぷで</th>
-        <th>けす</th>
+        <th>No. <?php
+            if($_SERVER['REQUEST_URI'] <> '/web_test3/pages/search.php?sort=ASC&column=No'){echo"<a href=search.php?sort=ASC&column=No>";}else{echo "<a href=search.php?sort=DESC&column=No>";}?><i class="fa-solid fa-bars"></i>
+            <?php echo"</a>"?>
+        <th>name <?php
+            if($_SERVER['REQUEST_URI'] <> '/web_test3/pages/search.php?sort=ASC&column=name'){echo"<a href=search.php?sort=ASC&column=name>";}else{echo "<a href=search.php?sort=DESC&column=name>";}?><i class="fa-solid fa-bars"></i>
+            <?php echo"</a>"?>
+        <th>team <?php
+            if($_SERVER['REQUEST_URI'] <> '/web_test3/pages/search.php?sort=ASC&column=Length(team)'){echo"<a href=search.php?sort=ASC&column=Length(team)>";}else{echo "<a href=search.php?sort=DESC&column=Length(team)>";}?><i class="fa-solid fa-bars"></i>
+            <?php echo"</a>"?>
+        <th>update</th>
+        <th>delete</th>
     </tr>
     　 <?php $x=1; foreach ($result as $value): ?>
         <tr>
@@ -60,9 +91,13 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
             <td>
                 　<?php echo $value['team'] ?></td>
             <td>
-                <?php echo "<button class=`button3`><a href=edit.php?id=" . $value["id"] . ">update</a></button>";
+                <?php echo "<!--<button class=`button3`>--><a href=edit.php?id=" . $value["id"] . ">"; ?>
+                <i class="fa-solid fa-pen-nib"></i>
+                <?php echo "</a>\n";
                 echo "<td>";
-                echo "<button class=`button3`><a href=delete.php?id=" . $value["id"] . ">delete</a></button>\n";
+                echo "<!--<button class=`button3`>--><a href=delete.php?id=" . $value["id"] . ">"; ?>
+                <i class="fa-solid fa-trash"></i>
+                <?php echo "</a>\n";
                 echo "</tr>\n"; ?>
                 <?php $x++ ?>
         </tr>

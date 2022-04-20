@@ -6,3 +6,7 @@ function checkName() {
     } else {button.disabled = true;}
 }
 
+function changer() {
+
+
+}

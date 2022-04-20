@@ -13,7 +13,7 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
 <font color='#e0ff80'>
     <div align='center'>
 <!--<div style="padding: 10px; margin-bottom: 10px; width:380px; border: 5px double #333333; background-color: white;">-->
-    <font color=blue>
+    <font color=lime>
         <?php
         include 'pages/connection.php';
         // check if column exists
@@ -25,10 +25,15 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
         }else{
             $column= "name";
             $sort= "ASC";}
+        $_SESSION["search_word"] = "";
+        $_SESSION["team_belongings"] = "";
 /*        {$stmt = $dbh->query('SELECT * FROM players ORDER BY length(`players`.`team`) DESC,`No` ASC LIMIT 16');}*/
         $stmt = $dbh->query('SELECT * FROM players ORDER BY '.$column.' '.$sort.', Length(`team`) LIMIT 16');
+        $teams = $dbh->query('SELECT DISTINCT `team` FROM players ORDER BY Length(`team`) DESC LIMIT 15');
         $result = 0;
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result_t = 0;
+        $result_t = $teams->fetchAll(PDO::FETCH_ASSOC);
         $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
 /*        echo "<table>\n";
         echo "<tr>\n";
@@ -49,9 +54,12 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
         echo "</table>\n";*/
         ?>
 <form action="pages/search.php" method="POST">
-    <input type="text" id="name" name="search_word" placeholder="search name">
+    <input type="text" id="name" name="search_word" placeholder="search name"><br><br><b>
+    　 <?php $x=1; foreach ($result_t as $value): ?>
+            <input type="radio" name="team_belongings" value="<?php echo $value['team'] ?>">
+        <?php echo $value['team'] ?><?php if($x % 5 ==0){echo "<br>";}?><?php $x++ ?><?php endforeach ?><br>
     <button type="submit" name="login" id="button" class="button3">
-        <i class="fa-regular fa-futbol"></i> Search it！</button>
+        <i class="fa-regular fa-futbol"></i> Search it！</button></form>
     <div align="right">
     <select name="sort" onChange="location.href=value;">
         <option value="" selected>えらべ！</option>
@@ -63,9 +71,17 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
     <table class="players=country">
     </div>
         <tr>
-            <th>No.<a href="players_list.php?sort=ASC&column=No">↓</a><a href="players_list.php?sort=DESC&column=No">↑</a></th>
-            <th>name<a href="players_list.php?sort=ASC&column=name">↓</a><a href="players_list.php?sort=DESC&column=name">↑</a></th>
-            <th>team<a href="players_list.php?sort=ASC&column=Length(team)">↓</a><a href="players_list.php?sort=DESC&column=Length(team)">↑</a></th>
+            <th>No. <?php
+                if($_SERVER['REQUEST_URI'] <> '/web_test3/players_list.php?sort=ASC&column=No')
+                {echo"<a href=players_list.php?sort=ASC&column=No>";}
+                else{echo "<a href=players_list.php?sort=DESC&column=No>";}?><i class="fa-solid fa-bars"></i>
+                <?php echo"</a>"?>
+            <th>name <?php
+                if($_SERVER['REQUEST_URI'] <> '/web_test3/players_list.php?sort=ASC&column=name'){echo"<a href=players_list.php?sort=ASC&column=name>";}else{echo "<a href=players_list.php?sort=DESC&column=name>";}?><i class="fa-solid fa-bars"></i>
+                <?php echo"</a>"?>
+            <th>team <?php
+            if($_SERVER['REQUEST_URI'] <> '/web_test3/players_list.php?sort=ASC&column=Length(team)'){echo"<a href=players_list.php?sort=ASC&column=Length(team)>";}else{echo "<a href=players_list.php?sort=DESC&column=Length(team)>";}?><i class="fa-solid fa-bars"></i>
+            <?php echo"</a>"?>
             <th>update</th>
             <th>delete</th>
         </tr>
@@ -80,11 +96,15 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
                 <td>
                     　<?php echo $value['team'] ?></td>
                 <td>
-                <?php echo "<button class=`button3`><a href=pages/edit.php?id=" . $value["id"] . ">update</a></button>";
-                echo "<td>";
-                echo "<button class=`button3`><a href=pages/delete.php?id=" . $value["id"] . ">delete</a></button>\n";
-                echo "</tr>\n"; ?>
-                <?php $x++ ?>
+                    <?php echo "<!--<button class=`button3`>--><a href=edit.php?id=" . $value["id"] . ">"; ?>
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <?php echo "</a>\n";
+                    echo "<td>";
+                    echo "<!--<button class=`button3`>--><a href=delete.php?id=" . $value["id"] . ">"; ?>
+                    <i class="fa-solid fa-trash"></i>
+                    <?php echo "</a>\n";
+                    echo "</tr>\n"; ?>
+                    <?php $x++ ?>
             </tr>
         <?php endforeach ?>
     </table>
