@@ -3,7 +3,8 @@
 <?php session_start() ?>
 you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</font>"; ?>
 <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="pages/style.css"></head>
+<link rel="stylesheet" href="/web_test3/pages/style1.css"></head>
+<script src="/web_test3/pages/function.js"></script>
 <div align="right">
     <a href="pages/log_out.php">
         <button type="button" name="out_button" id="button">
@@ -15,7 +16,12 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
     <font color=blue>
         <?php
         include 'pages/connection.php';
-        $stmt = $dbh->query('SELECT * FROM players ORDER BY `players`.`id` DESC LIMIT 16');
+        /*$sort = 0;
+        $sort = $_POST['sort'];
+        if($sort == 'new'){
+        $stmt = $dbh->query('SELECT * FROM players ORDER BY `No` ASC LIMIT 16');}
+        else*/
+        {$stmt = $dbh->query('SELECT * FROM players ORDER BY length(`players`.`team`) DESC,`No` ASC LIMIT 16');}
         $result = 0;
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
@@ -37,7 +43,20 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
         }
         echo "</table>\n";*/
         ?>
+<form action="pages/search.php" method="POST">
+    <input type="text" id="name" name="search_word" placeholder="search name">
+    <button type="submit" name="login" id="button" class="button3">
+        <i class="fa-regular fa-futbol"></i> Search it！</button></form>
     <table class="players=country">
+    <div align='right'>
+        <select name="sort" onChange="location.href=value;">
+            <option value="name" selected>えらべ！</option>
+            <option value="new.php">new one !</option>
+            <option value="new.php">new one !</option>
+            <option value="new.php">new one !</option>
+            <option value="new.php">new one !</option>
+        </select>
+    </div>
         <tr>
             <th>No.</th>
             <th>なまえ</th>
@@ -56,9 +75,9 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
                 <td>
                     　<?php echo $value['team'] ?></td>
                 <td>
-                <?php echo "<button><a href=pages/edit.php?id=" . $value["id"] . ">update</a></button>";
+                <?php echo "<button class=`button3`><a href=pages/edit.php?id=" . $value["id"] . ">update</a></button>";
                 echo "<td>";
-                echo "<button><a href=pages/delete.php?id=" . $value["id"] . ">delete</a></button>\n";
+                echo "<button class=`button3`><a href=pages/delete.php?id=" . $value["id"] . ">delete</a></button>\n";
                 echo "</tr>\n"; ?>
                 <?php $x++ ?>
             </tr>
