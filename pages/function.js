@@ -5,8 +5,3 @@ function checkName() {
         button.disabled = false;
     } else {button.disabled = true;}
 }
-
-function changer() {
-
-
-}

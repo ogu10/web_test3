@@ -14,7 +14,7 @@
     <font color=red>
     <?php
     include 'pages/connection.php';
-    // check if column exists
+        // check if column exists
     if(isset($_GET["column"]) && isset($_GET["sort"])){
         // extract if exist from get array
         $column = $_GET["column"];
@@ -23,6 +23,16 @@
     }else{
         $column= "name";
         $sort= "ASC";}
+/*    if(isset($_GET["button_No"])){
+    if($_SESSION["column"] == 'No' && $_SESSION["sort"] = 'DESC'){
+        $_SESSION["sort"] = 'ASC';
+        $_SESSION["column"] = 'No';
+    }elseif($_SESSION["column"] == 'No' && $_SESSION["sort"] = 'ASC'){
+        $_SESSION["sort"] = 'DESC';
+        $_SESSION["column"] = 'No';}}
+echo $_SESSION["sort"];
+echo $_SESSION["column"];*/
+
     if(isset($_GET["search_word"]) && isset($_GET["team_belongings"])) {
     }elseif(isset($_GET["search_word"])){
         $_GET["team_belongings"] = '';
@@ -55,19 +65,26 @@
 <table class="players=country">
     </div>
     <tr>
-        <th>No. <?php
-/*            if($_SERVER['get_URI'] <> '/web_test3/players_list2.php?sort=ASC&column=No')
-            {echo"<a href=players_list2.php?sort=ASC&column=No>";}
-            else{echo "<a href=players_list2.php?sort=DESC&column=No>";}*/?><!--<i class="fa-solid fa-bars"></i>
-            -->
-            <input type="hidden" name="sort" value="DESC">
-            <input type="hidden" name="column" value="No">
-            <button class='button5' type='submit';>
-            <i class="fa-solid fa-bars"></i>
-            </button>
-        <th>name <?php
-            if($_SERVER['REQUEST_URI'] <> '/web_test3/players_list2.php?sort=ASC&column=name'){echo"<a href=players_list2.php?sort=ASC&column=name>";}else{echo "<a href=players_list2.php?sort=DESC&column=name>";}?><i class="fa-solid fa-bars"></i>
-            <?php echo"</a>"?>
+        <th>No. <button name="button_No" class='button5' type='submit';><i class="fa-solid fa-bars"></i></button>
+            <?php if((strpos($_SERVER['REQUEST_URI'],'sort=DESC&column=No')) && isset($_POST['button_No'])){
+            echo '<input type="hidden" name="sort" value="ASC">';
+            echo '<input type="hidden" name="column" value="No">';
+            }elseif(isset($_POST['button_No'])){
+            echo '<input type="hidden" name="sort" value="DESC">';
+            echo '<input type="hidden" name="column" value="No">';} ?>
+        <th>name
+            <?php if(strpos($_SERVER['REQUEST_URI'],'sort=DESC&column=name')){
+            echo '<input type="hidden" name="sort" value="ASC">';
+            echo '<input type="hidden" name="column" value="name">';
+            echo "<button class='button5' type='submit';>";
+            echo '<i class="fa-solid fa-bars"></i>';
+            echo "</button>";
+            }else{
+            echo '<input type="hidden" name="sort" value="DESC">';
+            echo '<input type="hidden" name="column" value="name">';
+            echo "<button class='button5' type='submit';>";
+            echo '<i class="fa-solid fa-bars"></i>';
+            echo "</button>";} ?>
         <th>team <?php
             if($_SERVER['REQUEST_URI'] <> '/web_test3/players_list2.php?sort=ASC&column=Length(team)'){echo"<a href=players_list2.php?sort=ASC&column=Length(team)>";}else{echo "<a href=players_list2.php?sort=DESC&column=Length(team)>";}?><i class="fa-solid fa-bars"></i>
             <?php echo"</a>"?></form>
