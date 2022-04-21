@@ -33,8 +33,8 @@
 echo    $column;
 echo    $sort;
 echo "<br><br>";
-
-    if(isset($_GET["search_word"]) && (isset($_GET["team_belongings"]) || is_array($_GET["team_belongings"]))) {
+    if(isset($_GET["search_word"]) && (isset($_GET["team_belongings"]))){/*
+    if(isset($_GET["search_word"]) && (isset($_GET["team_belongings"]) || is_array($_GET["team_belongings"]))) {*/
     }elseif(isset($_GET["search_word"])){
         $_GET["team_belongings"] = '';
     }else{
@@ -53,20 +53,25 @@ echo "<br><br>";
 
 /*       $teamsData = $_GET['team_belongings'];
        $arr = implode(',',$teamsData);*/
-    if(isset($_GET["search_word"])){
+    if(is_array($_GET['team_belongings'])){
        $elements = count($_GET['team_belongings']);
-       echo $elements;}else{$elements = 0;}
+       echo $elements;}elseif(isset($_GET['team_belongings'])){$elements = 1;
+        echo $elements;
+    }else{$elements = 0;
+        echo $elements;}
 
     if($elements == 0){
         $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' ORDER BY `$column` $sort";
     }elseif($elements == 1){
-        $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."') ORDER BY `$column` $sort";
+        $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND `team` LIKE '%".$_GET['team_belongings'][0]."%' ORDER BY `$column` $sort";
     }elseif($elements == 2){
         $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."')ORDER BY `$column` $sort";
     }elseif($elements == 3){
-                $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."' or `team` LIKE '".$_GET['team_belongings'][2]."') ORDER BY `$column` $sort";
-    }elseif($elements >= 4){
-        $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."' or `team` LIKE '".$_GET['team_belongings'][2]."' or `team` LIKE '".$_GET['team_belongings'][3]."') ORDER BY `$column` $sort";}
+        $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."' or `team` LIKE '".$_GET['team_belongings'][2]."') ORDER BY `$column` $sort";
+    }elseif($elements == 4){
+        $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."' or `team` LIKE '".$_GET['team_belongings'][2]."' or `team` LIKE '".$_GET['team_belongings'][3]."') ORDER BY `$column` $sort";
+    }elseif($elements >= 5){
+        $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."' or `team` LIKE '".$_GET['team_belongings'][2]."' or `team` LIKE '".$_GET['team_belongings'][3]."' or `team` LIKE '".$_GET['team_belongings'][4]."') ORDER BY `$column` $sort";}
 /*        $stmt = $dbh->prepare($query);
         $stmt->bindParam(':values', $teamsData, PDO::PARAM_STR);*/
 /*        var_dump($query);*/
@@ -86,7 +91,7 @@ echo "<br><br>";
     <input type="text" id="name" name="search_word" placeholder="search name"  value="<?php echo $_GET['search_word'] ?>"><br><br><b>
         <?php $x=1; foreach ($result_t as $value_t): ?>
             <input type="checkbox" name="team_belongings[]" value="<?php echo $value_t['team'] ?>"
-                <?php /*if($value_t['team'] == $_GET['team_belongings'][0] or $value_t['team'] == $_GET['team_belongings'][1] or$value_t['team'] == $_GET['team_belongings'][2] or $value_t['team'] == $_GET['team_belongings'][3]){echo 'checked';}*/?>>
+                <?php if(is_array($_GET["search_word"])){if($value_t['team'] == $_GET['team_belongings'][0]) /* or $value_t['team'] == $_GET['team_belongings'][1] or$value_t['team'] == $_GET['team_belongings'][2] or $value_t['team'] == $_GET['team_belongings'][3])*/{echo 'checked';}}?>>
             <?php echo $value_t['team'] ?><?php if($x % 5 ==0){echo "<br>";}?><?php $x++ ?>
         <?php endforeach ?></b><br><br>
     <button type="submit" id="button" class="button3">
