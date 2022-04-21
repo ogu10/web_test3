@@ -9,7 +9,7 @@
         <a href="pages/log_out.php">
             <button type="button" name="out_button" id="button">
                 <i class="fa-solid fa-right-from-bracket"></i> log out</button></a></div>
-    <body background="images/1_3.jpg"><br>
+    <body background="images/3_2.jpg"><br>
     <div align='center'>
     <font color=red>
     <?php
@@ -30,8 +30,8 @@
         }elseif($_SESSION["column"] == 'No' && $_SESSION["sort"] = 'ASC'){
         $_SESSION["sort"] = 'DESC';
         $_SESSION["column"] = 'No';}}*/
-echo    $column;
-echo    $sort;
+/*echo    $column;
+echo    $sort;*/
 echo "<br><br>";
     if(isset($_GET["search_word"]) && (isset($_GET["team_belongings"]))){/*
     if(isset($_GET["search_word"]) && (isset($_GET["team_belongings"]) || is_array($_GET["team_belongings"]))) {*/
@@ -55,13 +55,13 @@ echo "<br><br>";
        $arr = implode(',',$teamsData);*/
     if(is_array($_GET['team_belongings'])){
        $elements = count($_GET['team_belongings']);
-       echo $elements;}elseif(isset($_GET['team_belongings'])){$elements = 1;
-        echo $elements;
-    }else{$elements = 0;
-        echo $elements;}
+       /*echo $elements;*/}elseif(isset($_GET['team_belongings'])){$elements = 1;
+    }else{$elements = 0;}
 
     if($elements == 0){
         $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' ORDER BY `$column` $sort";
+    }elseif($_GET['team_belongings'] == '') {
+        $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND `team` LIKE '%" . $_GET['team_belongings'] . "%' ORDER BY `$column` $sort";
     }elseif($elements == 1){
         $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND `team` LIKE '%".$_GET['team_belongings'][0]."%' ORDER BY `$column` $sort";
     }elseif($elements == 2){
@@ -91,7 +91,9 @@ echo "<br><br>";
     <input type="text" id="name" name="search_word" placeholder="search name"  value="<?php echo $_GET['search_word'] ?>"><br><br><b>
         <?php $x=1; foreach ($result_t as $value_t): ?>
             <input type="checkbox" name="team_belongings[]" value="<?php echo $value_t['team'] ?>"
-                <?php if(is_array($_GET["search_word"])){if($value_t['team'] == $_GET['team_belongings'][0]) /* or $value_t['team'] == $_GET['team_belongings'][1] or$value_t['team'] == $_GET['team_belongings'][2] or $value_t['team'] == $_GET['team_belongings'][3])*/{echo 'checked';}}?>>
+                <?php if(is_array($_GET["team_belongings"])){if($value_t['team'] == $_GET['team_belongings'][0]){echo "checked";}} ?>
+                <?php if($elements == 2){if($value_t['team'] == $_GET['team_belongings'][1]){echo "checked";}} ?>
+                <?php if($elements >= 3){if(($value_t['team'] == $_GET['team_belongings'][1])or($value_t['team'] == $_GET['team_belongings'][2])){echo "checked";}} ?>>
             <?php echo $value_t['team'] ?><?php if($x % 5 ==0){echo "<br>";}?><?php $x++ ?>
         <?php endforeach ?></b><br><br>
     <button type="submit" id="button" class="button3">
