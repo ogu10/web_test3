@@ -23,27 +23,32 @@
     }else{
         $column= "name";
         $sort= "ASC";}
-/*    if(isset($_GET["button_No"])){
+    if(isset($_GET["button_No"])){
     if($_SESSION["column"] == 'No' && $_SESSION["sort"] = 'DESC'){
         $_SESSION["sort"] = 'ASC';
         $_SESSION["column"] = 'No';
-    }elseif($_SESSION["column"] == 'No' && $_SESSION["sort"] = 'ASC'){
+        }elseif($_SESSION["column"] == 'No' && $_SESSION["sort"] = 'ASC'){
         $_SESSION["sort"] = 'DESC';
         $_SESSION["column"] = 'No';}}
 echo $_SESSION["sort"];
-echo $_SESSION["column"];*/
+echo $_SESSION["column"];
 
-    if(isset($_GET["search_word"]) && isset($_GET["team_belongings"])) {
+    if(isset($_GET["search_word"]) && (isset($_GET["team_belongings"])/* || is_array($_GET["team_belongings"])*/)) {
     }elseif(isset($_GET["search_word"])){
         $_GET["team_belongings"] = '';
     }else{
         $_GET["search_word"] = '';
         $_GET["team_belongings"] = '';
 }
+
+/*    foreach( $_GET['team_belongings'] as $value ){
+    echo "{$value},";}*/
+
         $result = 0;
-        $query = "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND `team` LIKE '%${_GET['team_belongings']}%' ORDER BY $column $sort";
-/*         var_dump($query);
-        die;*/
+/*        $teams_selected = SELECT `team` FROM $_GET['team_belongings'];*/
+        $query = "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND `team` LIKE '%${_GET['team_belongings']}%' ORDER BY `$column` $sort";
+         var_dump($_GET['team_belongings']);
+         var_dump($query);
         $stmt = $dbh->query($query);
 /*        $stmt = $dbh->query('SELECT * FROM players ORDER BY '.$column.' '.$sort.', Length(`team`) LIMIT 16');*/
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -65,7 +70,7 @@ echo $_SESSION["column"];*/
 <table class="players=country">
     </div>
     <tr>
-        <th>No. <button name="button_No" class='button5' type='submit';><i class="fa-solid fa-bars"></i></button>
+        <th>No. <button name="button_No" value="1" class='button5' type='submit';><i class="fa-solid fa-bars"></i></button>
             <?php if((strpos($_SERVER['REQUEST_URI'],'sort=DESC&column=No')) && isset($_POST['button_No'])){
             echo '<input type="hidden" name="sort" value="ASC">';
             echo '<input type="hidden" name="column" value="No">';
