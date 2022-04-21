@@ -53,20 +53,20 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
         }
         echo "</table>\n";*/
         ?>
-<form action="pages/search.php" method="POST">
+<form action="search.php" method="GET">
     <input type="text" id="name" name="search_word" placeholder="search name"><br><br><b>
     　 <?php $x=1; foreach ($result_t as $value): ?>
             <input type="radio" name="team_belongings" value="<?php echo $value['team'] ?>">
         <?php echo $value['team'] ?><?php if($x % 5 ==0){echo "<br>";}?><?php $x++ ?><?php endforeach ?><br>
-    <button type="submit" name="login" id="button" class="button3">
-        <i class="fa-regular fa-futbol"></i> Search it！</button></form>
+    <button type="submit" id="button" class="button3">
+        <i class="fa-regular fa-futbol"></i> Search it！</button>
     <div align="right">
     <select name="sort" onChange="location.href=value;">
         <option value="" selected>えらべ！</option>
-        <option value="players_list.php?sort=ASC&column=id">id up!</option>
-        <option value="players_list.php?sort=DESC&column=id">id down!</option>
-        <option value="players_list.php?sort=ASC&column=Length(team)">team up!</option>
-        <option value="players_list.php?sort=DESC&column=Length(team)">team down!</option>
+        <option value="players_list2.php?sort=ASC&column=id">id up!</option>
+        <option value="players_list2.php?sort=DESC&column=id">id down!</option>
+        <option value="players_list2.php?sort=ASC&column=Length(team)">team up!</option>
+        <option value="players_list2.php?sort=DESC&column=Length(team)">team down!</option>
     </select></div>
     <table class="players=country">
     </div>
@@ -77,11 +77,11 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
                 else{echo "<a href=players_list.php?sort=DESC&column=No>";}?><i class="fa-solid fa-bars"></i>
                 <?php echo"</a>"?>
             <th>name <?php
-                if($_SERVER['REQUEST_URI'] <> '/web_test3/players_list.php?sort=ASC&column=name'){echo"<a href=players_list.php?sort=ASC&column=name>";}else{echo "<a href=players_list.php?sort=DESC&column=name>";}?><i class="fa-solid fa-bars"></i>
+                if($_SERVER['REQUEST_URI'] <> '/web_test3/players_list2.php?sort=ASC&column=name'){echo"<a href=players_list2.php?sort=ASC&column=name>";}else{echo "<a href=players_list2.php?sort=DESC&column=name>";}?><i class="fa-solid fa-bars"></i>
                 <?php echo"</a>"?>
             <th>team <?php
-            if($_SERVER['REQUEST_URI'] <> '/web_test3/players_list.php?sort=ASC&column=Length(team)'){echo"<a href=players_list.php?sort=ASC&column=Length(team)>";}else{echo "<a href=players_list.php?sort=DESC&column=Length(team)>";}?><i class="fa-solid fa-bars"></i>
-            <?php echo"</a>"?>
+            if($_SERVER['REQUEST_URI'] <> '/web_test3/players_list2.php?sort=ASC&column=Length(team)'){echo"<a href=players_list2.php?sort=ASC&column=Length(team)>";}else{echo "<a href=players_list2.php?sort=DESC&column=Length(team)>";}?><i class="fa-solid fa-bars"></i>
+            <?php echo"</a>"?></form>
             <th>update</th>
             <th>delete</th>
         </tr>

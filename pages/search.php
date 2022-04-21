@@ -9,27 +9,26 @@ if(isset($_REQUEST["column"]) && isset($_REQUEST["sort"])){
 }else{
     $column= "name";
     $sort= "ASC";}*/
-if(isset($_POST["search_word"]) || isset($_POST["team_belongings"]))
+if(isset($_GET["search_word"]) || isset($_GET["team_belongings"]))
 {
-    if(isset($_POST["search_word"]) && isset($_POST["team_belongings"]))
+/*    if(isset($_GET["search_word"]) && isset($_GET["team_belongings"]))
     {
-        $_SESSION["search_word"] = $_POST["search_word"];
-        $_SESSION["team_belongings"] = $_POST["team_belongings"];
+        $_GET["search_word"] = $_GET["search_word"];
+        $_GET["team_belongings"] = $_GET["team_belongings"];
     }
-    elseif(isset($_POST["search_word"]))
+    elseif(isset($_GET["search_word"]))
     {
-        $_SESSION["search_word"] = $_POST["search_word"];
+        $_GET["search_word"] = $_GET["search_word"];
     }
-    elseif(isset($_POST["team_belongings"]))
+    elseif(isset($_GET["team_belongings"]))
     {
-        $_SESSION["team_belongings"] = $_POST["team_belongings"];
+        $_GET["team_belongings"] = $_GET["team_belongings"];
 
-    }
-    $_SESSION['team_belongings'] = '';
+    }*/
 
-        $stmt = $dbh->query("SELECT * FROM players WHERE /*`No` LIKE '%${_SESSION['search_word']}%'
-                             OR */`name` LIKE '%${_SESSION['search_word']}%' 
-                             AND `team` LIKE '%${_SESSION['team_belongings']}%' ORDER BY length(team) DESC, `No`");/*else{
+        $stmt = $dbh->query("SELECT * FROM players WHERE /*`No` LIKE '%${_GET['search_word']}%'
+                             OR */`name` LIKE '%${_GET['search_word']}%' 
+                             AND `team` LIKE '%${_GET['team_belongings']}%' ORDER BY length(team) DESC, `No`");/*else{
         echo "href=player_list.php";}*/
         $teams = $dbh->query('SELECT DISTINCT `team` FROM players ORDER BY Length(`team`) DESC LIMIT 15');
         $result = 0;
@@ -38,7 +37,7 @@ if(isset($_POST["search_word"]) || isset($_POST["team_belongings"]))
         $result_t = $teams->fetchAll(PDO::FETCH_ASSOC);$id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
 }
 else{
-    header('Location: ../players_list.php');
+    header('Location: ../players_list2.php');
     }
 ?>
 you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</font>"; ?>
@@ -51,11 +50,11 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
 <div align='center'>
 <body background="images/1_3.jpg"><br>
 <font color='red'>
-<form action="search.php" method="POST">
-    <input type="text" id="name" name="search_word" placeholder="search name"  value="<?php echo $_SESSION['search_word'] ?>"><br><br><b>
-    　 <?php $x=1; foreach ($result_t as $value): ?><input type="radio" name="team_belongings" value="<?php echo $value['team'] ?>" <?php if($value['team'] == $_SESSION['team_belongings']){echo 'checked';}?>>
+<form action="search.php" method="GET">
+    <input type="text" id="name" name="search_word" placeholder="search name"  value="<?php echo $_GET['search_word'] ?>"><br><br><b>
+    　 <?php $x=1; foreach ($result_t as $value): ?><input type="radio" name="team_belongings" value="<?php echo $value['team'] ?>" <?php if($value['team'] == $_GET['team_belongings']){echo 'checked';}?>>
         <?php echo $value['team'] ?><?php if($x % 5 ==0){echo "<br>";}?><?php $x++ ?><?php endforeach ?></b><br><br>
-    <button type="submit" name="login" id="button" class="button3">
+    <button type="submit" id="button" class="button3">
         <i class="fa-regular fa-futbol"></i> Search it！</button></form>
 <!--    <div align="right">
         <select name="sort" onChange="location.href=value;">
@@ -108,6 +107,6 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
         <a href="../submit.php">go back to index</a>
     </p>
     <p>
-        <a href="../players_list.php">go back to list</a>
+        <a href="../players_list2.php">go back to list</a>
     </p>
 </font></div></body>

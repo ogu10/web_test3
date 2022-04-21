@@ -33,7 +33,7 @@ $dbh = NULL;//データベース接続を解除
     <br>
     <p>
         <a href="../submit.php">go back to index</a><br><br>
-        <a href="../players_list.php">go to answer list!</a>
+        <a href="../players_list2.php">go to answer list!</a>
     </p>
 
 <!--    <div style="padding: 10px; margin-bottom: 10px; width:300px; border: 5px double #333333; background-color: white;">

@@ -33,7 +33,7 @@ if(isset($_POST['datapost'])) {
     <br><br>
     <p><h1><font color='Green'><div style="padding: 10px; margin-bottom: 10px; width:300px; border: 5px double #333333; background-color: #e0ff80;">
                 <i class="fa-solid fa-list"></i><a> </a>
-                <a href="players_list.php">Answer list</a></h1></form></div>
+                <a href="players_list2.php">Answer list</a></h1></form></div>
 </p>
 
 </html>
