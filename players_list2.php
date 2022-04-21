@@ -23,17 +23,18 @@
     }else{
         $column= "name";
         $sort= "ASC";}
-    if(isset($_GET["button_No"])){
+/*    if(isset($_GET["button_No"])){
     if($_SESSION["column"] == 'No' && $_SESSION["sort"] = 'DESC'){
         $_SESSION["sort"] = 'ASC';
         $_SESSION["column"] = 'No';
         }elseif($_SESSION["column"] == 'No' && $_SESSION["sort"] = 'ASC'){
         $_SESSION["sort"] = 'DESC';
-        $_SESSION["column"] = 'No';}}
-echo $_SESSION["sort"];
-echo $_SESSION["column"];
+        $_SESSION["column"] = 'No';}}*/
+echo    $column;
+echo    $sort;
+echo "<br><br>";
 
-    if(isset($_GET["search_word"]) && (isset($_GET["team_belongings"])/* || is_array($_GET["team_belongings"])*/)) {
+    if(isset($_GET["search_word"]) && (isset($_GET["team_belongings"]) || is_array($_GET["team_belongings"]))) {
     }elseif(isset($_GET["search_word"])){
         $_GET["team_belongings"] = '';
     }else{
@@ -42,13 +43,35 @@ echo $_SESSION["column"];
 }
 
 /*    foreach( $_GET['team_belongings'] as $value ){
-    echo "{$value},";}*/
-
+          print_r("$value, ");}
+        echo "teams";*/
+/*    echo $_GET['team_belongings'][0];
+        die;*/
         $result = 0;
 /*        $teams_selected = SELECT `team` FROM $_GET['team_belongings'];*/
-        $query = "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND `team` LIKE '%${_GET['team_belongings']}%' ORDER BY `$column` $sort";
-         var_dump($_GET['team_belongings']);
-         var_dump($query);
+
+
+/*       $teamsData = $_GET['team_belongings'];
+       $arr = implode(',',$teamsData);*/
+    if(isset($_GET["search_word"])){
+       $elements = count($_GET['team_belongings']);
+       echo $elements;}else{$elements = 0;}
+
+    if($elements == 0){
+        $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' ORDER BY `$column` $sort";
+    }elseif($elements == 1){
+        $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."') ORDER BY `$column` $sort";
+    }elseif($elements == 2){
+        $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."')ORDER BY `$column` $sort";
+    }elseif($elements == 3){
+                $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."' or `team` LIKE '".$_GET['team_belongings'][2]."') ORDER BY `$column` $sort";
+    }elseif($elements >= 4){
+        $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."' or `team` LIKE '".$_GET['team_belongings'][2]."' or `team` LIKE '".$_GET['team_belongings'][3]."') ORDER BY `$column` $sort";}
+/*        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':values', $teamsData, PDO::PARAM_STR);*/
+/*        var_dump($query);*/
+//    die;
+//
         $stmt = $dbh->query($query);
 /*        $stmt = $dbh->query('SELECT * FROM players ORDER BY '.$column.' '.$sort.', Length(`team`) LIMIT 16');*/
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -62,7 +85,8 @@ echo $_SESSION["column"];
 <form action="players_list2.php" method="GET">
     <input type="text" id="name" name="search_word" placeholder="search name"  value="<?php echo $_GET['search_word'] ?>"><br><br><b>
         <?php $x=1; foreach ($result_t as $value_t): ?>
-            <input type="checkbox" name="team_belongings" value="<?php echo $value_t['team'] ?>" <?php if($value_t['team'] == $_GET['team_belongings']){echo 'checked';}?>>
+            <input type="checkbox" name="team_belongings[]" value="<?php echo $value_t['team'] ?>"
+                <?php /*if($value_t['team'] == $_GET['team_belongings'][0] or $value_t['team'] == $_GET['team_belongings'][1] or$value_t['team'] == $_GET['team_belongings'][2] or $value_t['team'] == $_GET['team_belongings'][3]){echo 'checked';}*/?>>
             <?php echo $value_t['team'] ?><?php if($x % 5 ==0){echo "<br>";}?><?php $x++ ?>
         <?php endforeach ?></b><br><br>
     <button type="submit" id="button" class="button3">
@@ -70,13 +94,13 @@ echo $_SESSION["column"];
 <table class="players=country">
     </div>
     <tr>
-        <th>No. <button name="button_No" value="1" class='button5' type='submit';><i class="fa-solid fa-bars"></i></button>
-            <?php if((strpos($_SERVER['REQUEST_URI'],'sort=DESC&column=No')) && isset($_POST['button_No'])){
+        <th>No. <!--<button name="button_No" value="1" class='button5' type='submit';><i class="fa-solid fa-bars"></i></button>
+            --><?php /*if((strpos($_SERVER['REQUEST_URI'],'sort=DESC&column=No')) && isset($_POST['button_No'])){
             echo '<input type="hidden" name="sort" value="ASC">';
             echo '<input type="hidden" name="column" value="No">';
             }elseif(isset($_POST['button_No'])){
             echo '<input type="hidden" name="sort" value="DESC">';
-            echo '<input type="hidden" name="column" value="No">';} ?>
+            echo '<input type="hidden" name="column" value="No">';} */?>
         <th>name
             <?php if(strpos($_SERVER['REQUEST_URI'],'sort=DESC&column=name')){
             echo '<input type="hidden" name="sort" value="ASC">';
