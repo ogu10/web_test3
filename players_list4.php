@@ -55,12 +55,8 @@
                     <?php $x=1; foreach ($result_t as $value_t): ?>
                         <input type="checkbox" name="team_belongings[]" value="<?php echo $value_t['team'] ?>"
                             <?php if(is_array($searchTeam)){if(in_array($value_t['team'], $searchTeam)){echo "checked";}} ?>>
-<!--                            <?php /*if($elements == 2){if($value_t['team'] == $searchTeam[1]){echo "checked";}} */?>
-                            <?php /*if($elements == 3){if(($value_t['team'] == $searchTeam[1])or($value_t['team'] == $searchTeam[2])){echo "checked";}} */?>
-                            --><?php /*if($elements >= 4){if(($value_t['team'] == $searchTeam[1])or($value_t['team'] == $searchTeam[2])or($value_t['team'] == $searchTeam[3])){echo "checked";}} */?>
                         <?php echo $value_t['team'] ?><?php if($x % 5 ==0){echo "<br>";}?><?php $x++ ?>
-                    <?php endforeach ?>
-                <!--<button id="fresh_button" onclick="fresh()" class="button5" >choose all</button>--><br><br></b>
+                    <?php endforeach ?><br><br></b>
                 <input type="hidden" name="sort" id="searchSort" value="<?php echo $sortOrder ?>">
                 <input type="hidden" name="column" id="searchColumn" value="<?php echo $sortBy ?>">
                 <button type="submit" id="submitButton" class="button3">
@@ -90,7 +86,7 @@
                 <i class="fa-solid fa-pen-nib"></i>
                 <?php echo "</a>\n";
                 echo "<td>";
-                echo "<!--<button class=`button3`>--><a href=pages/delete.php?id=" . $value["id"] . ">"; ?>
+                echo "<a id='deleteButton'>"; ?>
                 <i class="fa-solid fa-trash"></i>
                 <?php echo "</a>\n";
                 echo "</tr>\n"; ?>
@@ -147,6 +143,22 @@ const checkbox1 = document.getElementsByName("team_belongings[]")
             checkbox1[i].checked = true}
         this.onclick = clearName}
 */
+/*    function delete1(){
+        alert('マジで！？？')}*/
+/*    function delete2(){
+        var result = confirm('ホントに！？？');*/
+/*        if(result){href=pages/delete.php?id=" . $value["id"] . ";
+        }
+        else{alert('もどるよ')}*/
 
+        var deleteButton = document.getElementById('deleteButton');
+        deleteButton.addEventListener('click', function() {
+          var answer = window.confirm('Clicked!');
+                    if(answer) {
+                        window.location.href= "pages/delete.php?id=<?php echo $value['id'] ?>";
+                     }else {
+                        alert('Canceled...');
+                     }
 
+        })
 </script>
