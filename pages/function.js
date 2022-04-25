@@ -6,9 +6,4 @@ function checkName() {
     } else {button.disabled = true;}
 }
 
-function sortNo(){
-    document.getElementById("searchColumn").setAttribute("value","No")
-}
-function sortName(){
-    document.getElementById("searchColumn").setAttribute("value","name")
-}
+

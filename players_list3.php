@@ -17,8 +17,8 @@
 <?php
 include 'pages/connection.php';
 
-$sortBy = isset($_GET["column"])? $_GET["column"] : "name";
-$sortOrder = isset($_GET["sort"])? $_GET["sort"] : "ASC";
+$sortBy = isset($_GET["column"])? $_GET["column"] : "id";
+$sortOrder = isset($_GET["sort"])? $_GET["sort"] : "DESC";
 $searchName = isset($_GET["search_word"])? $_GET["search_word"] : '';
 $searchTeam = isset($_GET["team_belongings"])? $_GET["team_belongings"] : '';
 $elements = is_array($searchTeam)? count($searchTeam): '0';
@@ -53,7 +53,8 @@ if($elements == 0){
         <input type="checkbox" name="team_belongings[]" value="<?php echo $value_t['team'] ?>"
             <?php if(is_array($searchTeam)){if($value_t['team'] == $searchTeam[0]){echo "checked";}} ?>
             <?php if($elements == 2){if($value_t['team'] == $searchTeam[1]){echo "checked";}} ?>
-            <?php if($elements >= 3){if(($value_t['team'] == $searchTeam[1])or($value_t['team'] == $searchTeam[2])){echo "checked";}} ?>>
+            <?php if($elements == 3){if(($value_t['team'] == $searchTeam[1])or($value_t['team'] == $searchTeam[2])){echo "checked";}} ?>
+            <?php if($elements >= 4){if(($value_t['team'] == $searchTeam[1])or($value_t['team'] == $searchTeam[2])or($value_t['team'] == $searchTeam[3])){echo "checked";}} ?>>
         <?php echo $value_t['team'] ?><?php if($x % 5 ==0){echo "<br>";}?><?php $x++ ?>
     <?php endforeach ?></b><br><br>
     <input type="hidden" name="sort" id="searchSort" value="<?php echo $sortOrder ?>">
