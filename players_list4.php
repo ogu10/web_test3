@@ -20,23 +20,25 @@
             $sortBy = isset($_GET["column"])? $_GET["column"] : "id";
             $sortOrder = isset($_GET["sort"])? $_GET["sort"] : "DESC";
             $searchName = isset($_GET["search_word"])? $_GET["search_word"] : '';
-            $searchTeam = isset($_GET["team_belongings"])? $_GET["team_belongings"] : '';
+            $searchTeam = isset($_GET["team_belongings"])? $_GET["team_belongings"] : [];
             $elements = is_array($searchTeam)? count($searchTeam): '0';
 
-            if($elements == 0){
-                $query =  "SELECT * FROM players WHERE `name` LIKE '%$searchName%' ORDER BY $sortBy $sortOrder, Length(team)";
-            }elseif($_GET['team_belongings'] == '') {
-                $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND `team` LIKE '%" . $_GET['team_belongings'] . "%' ORDER BY $sortBy $sortOrder, Length(team)";
-            }elseif($elements == 1){
-                $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND `team` LIKE '%".$_GET['team_belongings'][0]."%' ORDER BY $sortBy $sortOrder";
-            }elseif($elements == 2){
-                $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."')ORDER BY $sortBy $sortOrder, Length(team)";
-            }elseif($elements == 3){
-                $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."' or `team` LIKE '".$_GET['team_belongings'][2]."') ORDER BY $sortBy $sortOrder, Length(team)";
-            }elseif($elements == 4){
-                $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."' or `team` LIKE '".$_GET['team_belongings'][2]."' or `team` LIKE '".$_GET['team_belongings'][3]."') ORDER BY $sortBy $sortOrder, Length(team)";
-            }elseif($elements >= 5){
-                $query =  "SELECT * FROM players WHERE `name` LIKE '%${_GET['search_word']}%' AND (`team` LIKE '".$_GET['team_belongings'][0]."' or `team` LIKE '".$_GET['team_belongings'][1]."' or `team` LIKE '".$_GET['team_belongings'][2]."' or `team` LIKE '".$_GET['team_belongings'][3]."' or `team` LIKE '".$_GET['team_belongings'][4]."') ORDER BY $sortBy $sortOrder, Length(team)";}
+
+            $array = '';
+            $y = 1;
+            foreach ($searchTeam as $teams):
+            $array .= "'".$teams."'";
+            if($y < $elements){
+                $array .= ", ";}
+            $y ++;
+            endforeach;
+
+
+            if($array == ''){
+            $query =  "SELECT * FROM players WHERE `name` LIKE '%$searchName%' ORDER BY $sortBy $sortOrder, Length(team)";
+            }else{
+            $query =  "SELECT * FROM players WHERE `name` LIKE '%$searchName%' AND `team` IN ($array) ORDER BY $sortBy $sortOrder, Length(team)";}
+            /*var_dump($query);*/
 
             $result = 0;
             $stmt = $dbh->query($query);
@@ -48,15 +50,17 @@
             ?>
 
             <form action="players_list4.php" method="GET">
-                <input type="text" id="name" name="search_word" placeholder="search name"  value="<?php echo $searchName ?>"><br><br><b>
+                <input type="text" id="search_word" name="search_word" placeholder="search name"  value="<?php echo $searchName ?>">
+                <input type="button" value="clear" onclick="clearName()" /><br><br><b>
                     <?php $x=1; foreach ($result_t as $value_t): ?>
                         <input type="checkbox" name="team_belongings[]" value="<?php echo $value_t['team'] ?>"
-                            <?php if(is_array($searchTeam)){if($value_t['team'] == $searchTeam[0]){echo "checked";}} ?>
-                            <?php if($elements == 2){if($value_t['team'] == $searchTeam[1]){echo "checked";}} ?>
-                            <?php if($elements == 3){if(($value_t['team'] == $searchTeam[1])or($value_t['team'] == $searchTeam[2])){echo "checked";}} ?>
-                            <?php if($elements >= 4){if(($value_t['team'] == $searchTeam[1])or($value_t['team'] == $searchTeam[2])or($value_t['team'] == $searchTeam[3])){echo "checked";}} ?>>
+                            <?php if(is_array($searchTeam)){if(in_array($value_t['team'], $searchTeam)){echo "checked";}} ?>>
+<!--                            <?php /*if($elements == 2){if($value_t['team'] == $searchTeam[1]){echo "checked";}} */?>
+                            <?php /*if($elements == 3){if(($value_t['team'] == $searchTeam[1])or($value_t['team'] == $searchTeam[2])){echo "checked";}} */?>
+                            --><?php /*if($elements >= 4){if(($value_t['team'] == $searchTeam[1])or($value_t['team'] == $searchTeam[2])or($value_t['team'] == $searchTeam[3])){echo "checked";}} */?>
                         <?php echo $value_t['team'] ?><?php if($x % 5 ==0){echo "<br>";}?><?php $x++ ?>
-                    <?php endforeach ?></b><br><br>
+                    <?php endforeach ?>
+                <!--<button id="fresh_button" onclick="fresh()" class="button5" >choose all</button>--><br><br></b>
                 <input type="hidden" name="sort" id="searchSort" value="<?php echo $sortOrder ?>">
                 <input type="hidden" name="column" id="searchColumn" value="<?php echo $sortBy ?>">
                 <button type="submit" id="submitButton" class="button3">
@@ -67,7 +71,7 @@
     <tr>
         <th>No. <button class='button5' type="submit" onclick="sortFunction('No')"><i class="fa-solid fa-bars"></i></button>
         <th>name <button class='button5' type="submit" onclick="sortFunction('name')"><i class="fa-solid fa-bars"></i></button>
-        <th>team <button class='button5' type="submit" onclick="sortFunction('team')"><i class="fa-solid fa-bars"></i></button>
+        <th>team <button class='button5' type="submit" onclick="sortFunction('Length(team)')"><i class="fa-solid fa-bars"></i></button>
         <th>update</th>
         <th>delete</th>
     </tr>
@@ -114,25 +118,6 @@
 if(!isset($_SESSION["user_name"])) {
     header("Location: pages/ban.php");} ?>
 <script>
-   // $URL = location.href;
-    /*function sortNo(){
-        if ($URL.match(/sort=ASC&column=No/)){
-            document.getElementById("searchSort").setAttribute("value","DESC")
-        }else{
-            document.getElementById("searchSort").setAttribute("value","ASC")
-            document.getElementById("searchColumn").setAttribute("value","No")}}
-    function sortName(){
-        if ($URL.match(/sort=ASC&column=name/)){
-            document.getElementById("searchSort").setAttribute("value","DESC")
-        }else{
-            document.getElementById("searchSort").setAttribute("value","ASC")
-            document.getElementById("searchColumn").setAttribute("value","name")}}
-    function sortTeam(){
-        if ($URL.match(/sort=ASC&column=Length%28team%29/)){
-            document.getElementById("searchSort").setAttribute("value","DESC")
-        }else{
-            document.getElementById("searchSort").setAttribute("value","ASC")
-            document.getElementById("searchColumn").setAttribute("value",'Length(team)')}}*/
     function sortFunction(param){
         var oldSortColumn = "<?php echo $sortBy; ?>"
         if(oldSortColumn === param){
@@ -141,9 +126,27 @@ if(!isset($_SESSION["user_name"])) {
             else
             {var sort = "ASC";}}
         else {
-            var sort = "ASC";}
+        var sort = "ASC";}
 
-        console.log(param);
         document.getElementById("searchSort").setAttribute("value",sort)
         document.getElementById("searchColumn").setAttribute("value",param)}
+
+/*checkbox1.onclick = clearName();*/
+const checkbox1 = document.getElementsByName("team_belongings[]")
+    function clearName(){
+        var search_word = document.getElementById("search_word");
+        search_word.value = '';
+        for(i = 0; i < checkbox1.length; i++) {
+            checkbox1[i].checked = false}
+        /*this.onclick = checked*/}
+/*
+    function checked(){
+        var search_word = document.getElementById("search_word");
+        search_word.value = '';
+        for(i = 0; i < checkbox1.length; i++) {
+            checkbox1[i].checked = true}
+        this.onclick = clearName}
+*/
+
+
 </script>

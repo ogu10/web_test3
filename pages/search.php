@@ -37,7 +37,7 @@ if(isset($_GET["search_word"]) || isset($_GET["team_belongings"]))
         $result_t = $teams->fetchAll(PDO::FETCH_ASSOC);$id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
 }
 else{
-    header('Location: ../players_list2.php');
+    header('Location: ../players_list4.php');
     }
 ?>
 you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</font>"; ?>
@@ -107,6 +107,6 @@ you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</fon
         <a href="../submit.php">go back to index</a>
     </p>
     <p>
-        <a href="../players_list2.php">go back to list</a>
+        <a href="../players_list4.php">go back to list</a>
     </p>
 </font></div></body>

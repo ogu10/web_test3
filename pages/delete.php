@@ -7,7 +7,7 @@ try {
     $stmt = $dbh->prepare('DELETE FROM players WHERE id = :id');
 
     $stmt->execute(array(':id' => $_GET["id"]));
-    header('Location: ../players_list2.php');
+    header('Location: ../players_list4.php');
 } catch (Exception $e) {
           echo 'エラーが発生しました。:' . $e->getMessage();
 }
@@ -25,7 +25,7 @@ try {
       <a href="submit.php">go back to index</a>
   </p>
   <p>
-      <a href="players_list2.php">go to answer list</a>
+      <a href="players_list4.php">go to answer list</a>
   </p>
   </body>
 </html>
