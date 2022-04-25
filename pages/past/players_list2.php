@@ -87,7 +87,7 @@ echo "<br><br>";
         $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
     ?>
 
-<form action="players_list2.php" method="GET">
+<form action="players_list3.php" method="GET">
     <input type="text" id="name" name="search_word" placeholder="search name"  value="<?php echo $_GET['search_word'] ?>"><br><br><b>
         <?php $x=1; foreach ($result_t as $value_t): ?>
             <input type="checkbox" name="team_belongings[]" value="<?php echo $value_t['team'] ?>"
