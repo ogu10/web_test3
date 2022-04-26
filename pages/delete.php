@@ -4,10 +4,11 @@
 try {
 
     include 'connection.php';
-    $stmt = $dbh->prepare('DELETE FROM players WHERE id = :id');
+    $del = $dbh->prepare('DELETE FROM players WHERE id = :id');
 
-    $stmt->execute(array(':id' => $_GET["id"]));
-    header('Location: ../players_list4.php');
+    $del->execute(array(':id' => $_GET["id"]));
+    header('Refresh:0; url=../players_list4.php');
+    die();
 } catch (Exception $e) {
           echo 'エラーが発生しました。:' . $e->getMessage();
 }

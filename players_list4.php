@@ -1,6 +1,7 @@
 <html lang="ja">
 <font color='white'>
-    <?php session_start() ?>
+    <?php session_start();
+    /*header("Refresh:2");*/?>
     you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</font>"; ?>
     <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/web_test3/pages/style1.css"></head>
@@ -9,7 +10,7 @@
         <a href="pages/log_out.php">
             <button type="button" name="out_button" id="button">
                 <i class="fa-solid fa-right-from-bracket"></i> log out</button></a></div>
-    <body id="background" background="images/3_2.jpg">
+    <body id="background" background="images/3_3.jpg">
     <br>
     <div align='center'>
         <font color=red>
@@ -43,6 +44,8 @@
             $result = 0;
             $stmt = $dbh->query($query);
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            echo "test";
+            print_r(sizeof($result));
             $result_t = 0;
             $teams = $dbh->query('SELECT DISTINCT `team` FROM players ORDER BY Length(`team`) DESC LIMIT 15');
             $result_t = $teams->fetchAll(PDO::FETCH_ASSOC);
@@ -53,7 +56,7 @@
                 <input type="text" id="search_word" name="search_word" placeholder="search name"  value="<?php echo $searchName ?>">
                 <input type="button" value="clear" onclick="clearName()" /><br><br><b>
                     <?php $x=1; foreach ($result_t as $value_t): ?>
-                        <input type="checkbox" name="team_belongings[]" value="<?php echo $value_t['team'] ?>"
+                        <input type="checkbox" name="team_belongings[]" value="<?php echo $value_t['team'] ?>" id="team<?php echo $x ?>"
                             <?php if(is_array($searchTeam)){if(in_array($value_t['team'], $searchTeam)){echo "checked";}} ?>>
                         <?php echo $value_t['team'] ?><?php if($x % 5 ==0){echo "<br>";}?><?php $x++ ?>
                     <?php endforeach ?><br><br></b>
@@ -133,9 +136,13 @@ if(!isset($_SESSION["user_name"])) {
         function clearName(){
             var search_word = document.getElementById("search_word");
             search_word.value = '';
+            if(checkbox1[1].checked = true){
             for(i = 0; i < checkbox1.length; i++) {
                 checkbox1[i].checked = false}
-            /*this.onclick = checked*/}
+            }else{
+            for(i = 0; i < checkbox1.length; i++) {
+                checkbox1[1].checked = true}
+            }}
 /*
     function checked(){
         var search_word = document.getElementById("search_word");
@@ -160,6 +167,7 @@ if(!isset($_SESSION["user_name"])) {
         /*alert('you clicked button-id: ' + target_value);*/
         if(answer) {
             window.location.href= 'pages/delete.php?id=' + target_value;
+            window.reload();
         }else {
         }}
 
