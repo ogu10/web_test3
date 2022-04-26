@@ -86,9 +86,10 @@
                 <i class="fa-solid fa-pen-nib"></i>
                 <?php echo "</a>\n";
                 echo "<td>";
-                echo "<a id='deleteButton'>"; ?>
+                echo "<button class='button3' id='deleteButton' value='${value["id"]}' onclick='deleteFunc(this)' >";
+/*                echo $value["id"];*/?>
                 <i class="fa-solid fa-trash"></i>
-                <?php echo "</a>\n";
+                <?php echo "</button>\n";
                 echo "</tr>\n"; ?>
                 <?php $x++ ?>
         </tr>
@@ -127,14 +128,14 @@ if(!isset($_SESSION["user_name"])) {
         document.getElementById("searchSort").setAttribute("value",sort)
         document.getElementById("searchColumn").setAttribute("value",param)}
 
-/*checkbox1.onclick = clearName();*/
-const checkbox1 = document.getElementsByName("team_belongings[]")
-    function clearName(){
-        var search_word = document.getElementById("search_word");
-        search_word.value = '';
-        for(i = 0; i < checkbox1.length; i++) {
-            checkbox1[i].checked = false}
-        /*this.onclick = checked*/}
+    /*checkbox1.onclick = clearName();*/
+    const checkbox1 = document.getElementsByName("team_belongings[]")
+        function clearName(){
+            var search_word = document.getElementById("search_word");
+            search_word.value = '';
+            for(i = 0; i < checkbox1.length; i++) {
+                checkbox1[i].checked = false}
+            /*this.onclick = checked*/}
 /*
     function checked(){
         var search_word = document.getElementById("search_word");
@@ -143,22 +144,31 @@ const checkbox1 = document.getElementsByName("team_belongings[]")
             checkbox1[i].checked = true}
         this.onclick = clearName}
 */
-/*    function delete1(){
-        alert('マジで！？？')}*/
-/*    function delete2(){
-        var result = confirm('ホントに！？？');*/
-/*        if(result){href=pages/delete.php?id=" . $value["id"] . ";
-        }
-        else{alert('もどるよ')}*/
 
-        var deleteButton = document.getElementById('deleteButton');
-        deleteButton.addEventListener('click', function() {
-          var answer = window.confirm('Clicked!');
-                    if(answer) {
-                        window.location.href= "pages/delete.php?id=<?php echo $value['id'] ?>";
-                     }else {
-                        alert('Canceled...');
-                     }
+/*    var deleteButton = document.getElementById('deleteButton');
+    deleteButton.addEventListener('click', function() {
+      var answer = window.confirm('Delete it...?');
+        alert('you clicked button-id: ' + this.value);
+                if(answer) {
+                    window.location.href= 'pages/delete.php?id=' + this.value;
+                 }else {
+                 }})*/
 
-        })
+    function deleteFunc(target){
+        var target_value = target.value;
+        var answer = window.confirm('Delete it...?');
+        /*alert('you clicked button-id: ' + target_value);*/
+        if(answer) {
+            window.location.href= 'pages/delete.php?id=' + target_value;
+        }else {
+        }}
+
+/*
+        'use strict';
+
+// 押したボタンのid名取得
+        document.getElementById('button').addEventListener('click', function(){
+            alert('id名「' + this.id + '」のボタンを押しました。');
+        });
+*/
 </script>
