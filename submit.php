@@ -44,7 +44,7 @@ if(isset($_POST['datapost'])) {
         <button type="submit" name="datapost" id="button" class="black_button" <!--disabled-->>
             <i class="fa-regular fa-futbol"></i> Kick off！</button>
         <p><font color='Green'></font><h1>
-            <a href='players_list4.php'><i class="fa-solid fa-list"></i> Answer list</a></h1></form>
+            <a href='players_list5.php'><i class="fa-solid fa-list"></i> Answer list</a></h1></form>
     </p>
     <p>
         <a href="pages/unit.php">go to unit!</a>

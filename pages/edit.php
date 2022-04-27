@@ -39,8 +39,17 @@ try {$dbh = new PDO("mysql:host=localhost; dbname=jobins; charset=utf8", "root",
         </form>
     </div>
     <br><h2>
-        <a href="../submit.php"><i class="fa-regular fa-futbol"></i> Go to Index</a><br>
-        <a href="../players_list4.php"><i class="fa-solid fa-list"></i> Answer list</a>
+        <a onclick="goForIndex()" ><i class="fa-regular fa-futbol"></i> Go to Index</a><br>
+        <a href="../players_list5.php"><i class="fa-solid fa-list"></i> Answer list</a>
     </h2>
     </body>
 </html>
+
+<script>
+    function goForIndex(){
+        var answer=window.confirm('【Caution!】\nAre you sure to left?');
+        if(answer){
+            window.location.href= "../players_list5.php";
+        }else{
+        }}
+</script>

@@ -59,7 +59,7 @@
         $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
         ?>
 
-            <form name="form1" id="form1" action="players_list4.php" method="GET">
+            <form name="form1" id="form1" action="players_list5.php" method="GET">
             <input type="text" id="search_word" name="search_word" placeholder="search name"  value="<?php echo $searchName ?>">
             <input type="button" value="clear" onclick="clearName()" /><br><br><b>
                 <?php $x=1; foreach ($result_t as $value_t): ?>
@@ -141,10 +141,11 @@ if(!isset($_SESSION["user_name"])) {
 
     /*checkbox1.onclick = clearName();*/
     const checkbox1 = document.getElementsByName("team_belongings[]")
+    const el = document.getElementsByClassName("checks");
     /*var elements = document.getElementById("elementNumber").value;*/
         function clearName(){
             var search_word = document.getElementById("search_word");
-/*            search_word.value = '';*/
+            search_word.value = '';
             if(checkbox1[1].checked = true){
             for(i = 0; i < checkbox1.length; i++) {
                 checkbox1[i].checked = false}
