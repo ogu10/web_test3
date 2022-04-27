@@ -3,6 +3,7 @@ body{
   background-position: 50%;
 }
 
+
 table{
   width: 60%;
   border-collapse:separate;
@@ -133,5 +134,3 @@ input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between c
 
 input[type=checkbox]:checked + label:before { content: "\f046"; } /* checked icon */
 input[type=checkbox]:checked + label:before { letter-spacing: 5px; } /* allow space for check mark */}
-
-
