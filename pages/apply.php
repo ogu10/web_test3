@@ -6,7 +6,7 @@ if(isset($_POST['datapost'])) {header('Location: regist2.php');} ?>
 <html>
 <div lang="ja">
     <head>
-        <link rel="stylesheet" href="style.css"></head>
+        <link rel="stylesheet" href="style1.css"></head>
     <div class="anim-box">
         <body background="images/0_7.jpg">
     </div>

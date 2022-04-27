@@ -4,15 +4,17 @@
 try {
 
     include 'connection.php';
-    $stmt = $dbh->prepare('DELETE FROM players WHERE id = :id');
+    $del = $dbh->prepare('DELETE FROM players WHERE id = :id');
 
-    $stmt->execute(array(':id' => $_GET["id"]));
-    header('Location: ../players_list.php');
+    $del->execute(array(':id' => $_GET["id"]));
+    header('Refresh:0; url=../players_list5.php');
+    die();
 } catch (Exception $e) {
           echo 'エラーが発生しました。:' . $e->getMessage();
 }
 
 ?>
+
 <!--
 <!DOCTYPE html>
 <html>
@@ -25,7 +27,7 @@ try {
       <a href="submit.php">go back to index</a>
   </p>
   <p>
-      <a href="players_list.php">go to answer list</a>
+      <a href="players_list5.php">go to answer list</a>
   </p>
   </body>
 </html>

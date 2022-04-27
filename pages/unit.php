@@ -39,7 +39,7 @@
 
 <HTML>
 <head>
-    <link rel="stylesheet" href="style.css"></head>
+    <link rel="stylesheet" href="style1.css"></head>
 <body background="images/11_<?php echo rand(6,6); ?>.jpg"></body>
 <div align='center'><br><br>
 
