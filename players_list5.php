@@ -118,13 +118,34 @@
     </div></body>
 </font></html>
 <div align="right"><font color="red">
-    total: <?php print_r(count($result)); ?></font><br>
+    total: <?php print_r(count($result)); ?>&nbsp;&nbsp;&nbsp;</font><br>
     <button class="button5" onclick="window.print()">Print this page</button>
 <!--    <button onclick="document.getElementById('background').background='images/3_3.jpg'"><i class="fa-solid fa-play"></i></button>
     <button onclick="document.getElementById('background').background='images/1_3.jpg'"><i class="fa-solid fa-play"></i></button>
     <button onclick="document.getElementById('background').background='images/0_2.jpg'"><i class="fa-solid fa-play"></i></button>
 --></div>
 <div align="center">
+<?php
+/*    if(isset($_POST['datapost'])) {
+        $_SESSION['No'] = $_POST['No'];
+        $_SESSION['team'] = $_POST['team'];
+        $_SESSION['name'] = $_POST['name'];
+        $_SESSION['league_id'] = $_POST['league_id'];
+        header('Location: pages/regist.php');} */?><!--
+    <form id="form2" action="" method="post">
+        <input type="int" name="No" placeholder="No"><br>
+        <input type="text" id="name" name="name" placeholder="name" oninput="checkName()"><br>
+        <input type="text" name="team" placeholder="team"><br><br><font color='Lime'>
+            <input type="radio" name="league_id" value="5">Ligue 1
+            <input type="radio" name="league_id" value="4">La Liga
+            <input type="radio" name="league_id" value="2">Serie A
+            <input type="radio" name="league_id" value="3">Bundesliga
+            <input type="radio" name="league_id" value="1">Premium League
+        </font>
+        <br><br>
+        <button type="submit" name="datapost" id="button" class="black_button">
+        <i class="fa-regular fa-futbol"></i> Kick off！</button></form>-->
+
     <p>
         <a href="submit.php">go back to index</a>
     </p>
