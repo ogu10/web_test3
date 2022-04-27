@@ -1,0 +1,33 @@
+html {height:100%;}
+body {margin:0;}
+
+.bg {
+    animation:slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-80deg, blue 50%, black 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.25;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-100;
+}
+
+.bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:4s;
+}
+
+.bg3 {
+    animation-duration:5s;
+}
+
+@keyframes slide {
+    0% {
+        transform:translateX(-20%);
+    }
+    100% {
+        transform:translateX(20%);
+    }
+}
+

@@ -1,7 +1,16 @@
 <html lang="ja">
 <font color='white'>
-    <head><!--<link rel="stylesheet" href="/web_test3/pages/background_test.css">-->
+
+    <head><link rel="stylesheet" href="/web_test3/pages/test4/test4.css">
         <link rel="stylesheet" href="/web_test3/pages/style1.css"></head>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div class="content">
+    </div>
+    </div >
+
+
     <?php session_start();
     /*header("Refresh:2");*/?>
     you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</font>"; ?>
@@ -11,7 +20,7 @@
         <a href="pages/log_out.php">
             <button type="button" name="out_button" id="button">
                 <i class="fa-solid fa-right-from-bracket"></i> log out</button></a></div>
-    <body id="background" background="images/3_3.jpg"></body>
+    <body id="background" background="images/4_9.jpg" alt="objectfit"></body>
     <!--    <div class="main_imgBox">
             <div class="main_img" style="background-image: url(images/3_3.jpg)"></div>
             <div class="main_img" style="background-image: url(images/3_2.jpg)"></div>-->
@@ -104,14 +113,13 @@
                 <?php echo "</button>\n";
                 echo "</tr>\n"; ?>
                 <?php $x++ ?>
-        </tr>
     <?php endforeach ?>
     </table>
     </div></body>
 </font></html>
-<div align="right">
-    <br>
-    <button class="button5" onclick="window.print()">Print this page</button><br>
+<div align="right"><font color="red">
+    total: <?php print_r(count($result)); ?></font><br>
+    <button class="button5" onclick="window.print()">Print this page</button>
 <!--    <button onclick="document.getElementById('background').background='images/3_3.jpg'"><i class="fa-solid fa-play"></i></button>
     <button onclick="document.getElementById('background').background='images/1_3.jpg'"><i class="fa-solid fa-play"></i></button>
     <button onclick="document.getElementById('background').background='images/0_2.jpg'"><i class="fa-solid fa-play"></i></button>
