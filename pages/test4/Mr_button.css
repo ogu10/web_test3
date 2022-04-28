@@ -1,0 +1,84 @@
+button {
+    /* ブラウザ特有のスタイルを無効に */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    /* 整える */
+    margin: 0.5em 0.5; /* 前後の隙間 */
+    padding: 0.6em 1em; /* 塗りの余白 */
+    font-size: 1em; /* フォントサイズ */
+    background-color: gray; /* 背景色 */
+    color: #FFF; /* テキストカラー */
+    cursor: pointer; /* カーソルを指マークに */
+    border-radius: 3px; /* 角の丸み */
+    border: 0; /* 枠線を消す */
+    transition: 0.2s; /* ホバーの変化を滑らかに */}
+/* ホバー時（カーソルをのせた時）の見た目 */
+button:hover {
+    background-color: lime; /* 背景色 */
+}
+button[disabled] {
+    color: darkred;
+    background: black;
+    cursor: not-allowed;
+}
+
+.button3 {
+    /* ブラウザ特有のスタイルを無効に */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    /* 整える */
+    margin: 0em 0; /* 前後の隙間 */
+    padding: 0.2em 0.4em; /* 塗りの余白 */
+    font-size: 1em; /* フォントサイズ */
+    background-color: blue; /* 背景色 */
+    color: #FFF; /* テキストカラー */
+    cursor: pointer; /* カーソルを指マークに */
+    border-radius: 3px; /* 角の丸み */
+    border: 0; /* 枠線を消す */
+    transition: 0.1s; /* ホバーの変化を滑らかに */}
+/* ホバー時（カーソルをのせた時）の見た目 */
+.button3:hover,
+.button3:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+    background-color: deepskyblue;
+}
+
+.button4{
+    /* ブラウザ特有のスタイルを無効に */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    /* 整える */
+    margin: 0em 0; /* 前後の隙間 */
+    padding: 0em 0em; /* 塗りの余白 */
+    font-size: 0.02em; /* フォントサイズ */
+    background-color: gray; /* 背景色 */
+    color: #FFF; /* テキストカラー */
+    cursor: pointer; /* カーソルを指マークに */
+    border-radius: 0.3px; /* 角の丸み */
+    border: 0; /* 枠線を消す */
+    transition: 0.2s; /* ホバーの変化を滑らかに */}
+
+.button5{
+    /* ブラウザ特有のスタイルを無効に */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    /* 整える */
+    margin: 0.4em 0.4; /* 前後の隙間 */
+    padding: 0.1em 0.3em; /* 塗りの余白 */
+    font-size: 0.8em; /* フォントサイズ */
+    background-color: gray; /* 背景色 */
+    color: #FFF; /* テキストカラー */
+    cursor: pointer; /* カーソルを指マークに */
+    border-radius: 0.3px; /* 角の丸み */
+    border: 0; /* 枠線を消す */
+    transition: 0.2s; /* ホバーの変化を滑らかに */}
+.button5:hover,
+.button5:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.2em);
+    background-color: greenyellow;

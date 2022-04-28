@@ -71,7 +71,7 @@
     <?php endforeach ?>
 </table>
     <p>
-        <a href="../submit.php">go back to index</a>
+        <a href="../players_list5.ph">go back to index</a>
     </p>
 </div>
 </HTML>

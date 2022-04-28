@@ -25,7 +25,7 @@ if(isset($_POST['datapost'])) {header('Location: regist2.php');} ?>
                 <input type="text" id="name" name="name" placeholder="name" oninput="checkName()"><br>
                 <input type="password" name="pass" placeholder="pass"><br>
                 <br><br>
-                <button type="submit" name="datapost" id="button" disabled>
+                <button type="players_list5" name="datapost" id="button" disabled>
                         <i class="fa-solid fa-pen-to-square"></i> Apply！</button><br><br><br>
                 <font color='white'>or<br>back to <a href="../index.php">log in page</a>
         </div></font>

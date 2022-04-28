@@ -7,7 +7,7 @@ try {
     $del = $dbh->prepare('DELETE FROM players WHERE id = :id');
 
     $del->execute(array(':id' => $_GET["id"]));
-    header('Refresh:0; url=../players_list5.php');
+    header('Refresh:0; url=test4/test5.php');
     die();
 } catch (Exception $e) {
           echo 'エラーが発生しました。:' . $e->getMessage();
@@ -24,10 +24,10 @@ try {
   </head>
   <body>
   <p>
-      <a href="submit.php">go back to index</a>
+      <a href="pages/test4/test5.php">go back to index</a>
   </p>
   <p>
-      <a href="players_list5.php">go to answer list</a>
+      <a href="pages/test4/test5.php">go to answer list</a>
   </p>
   </body>
 </html>

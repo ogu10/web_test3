@@ -29,7 +29,7 @@ if(isset($_POST['login'])) {
         <input type="text" id="name" name="name" placeholder="name" oninput="checkName()"><br>
         <input type="password" name="pass" placeholder="pass"><br>
         <br><br>
-        <button type="submit" name="login" id="button" class="black_button" disabled>
+        <button type="players_list5" name="login" id="button" class="black_button" disabled>
             <i class="fa-regular fa-futbol"></i> log in！</button></form><br>
 
             <p> if you are not registered, <br>
