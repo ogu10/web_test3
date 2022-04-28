@@ -67,7 +67,7 @@
             $result_t = $teams->fetchAll(PDO::FETCH_ASSOC);
             $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             ?>
-
+<div class="wrap">
             <form name="form1" id="form1" action="players_list5.php" method="GET">
                 <input type="text" id="search_word" name="search_word" placeholder="search name"  value="<?php echo $searchName ?>">
                 <input type="button" value="clear" onclick="clearName()" /><br><br><b>
@@ -81,9 +81,9 @@
                 <input type="hidden" name="deleteID" id="deleteID" value="<?php echo $deleteID ?>">
                 <button type="submit" id="submitButton" class="button3">
                     <i class="fa-regular fa-futbol"></i> Search it！</button><br>
-                <table class="players=country">
-                    <!--<div id="aa"><p>test</p></div>-->
-    </div>
+
+<div class="box box1">
+<table class="playters_list">
     <th>No. <button class='button5' type="submit" onclick="sortFunction('No')"><i class="fa-solid fa-bars"></i></button>
     <th>name <button class='button5' type="submit" onclick="sortFunction('name')"><i class="fa-solid fa-bars"></i></button>
     <th>team <button class='button5' type="submit" onclick="sortFunction('Length(team)')"><i class="fa-solid fa-bars"></i></button>
@@ -114,43 +114,36 @@
                 echo "</tr>\n"; ?>
                 <?php $x++ ?>
     <?php endforeach ?>
-    </table>
-    </div></body>
-</font></html>
+    </table></form>
+    </body>
+</div></font></html>
 <div align="right"><font color="red">
-    total: <?php print_r(count($result)); ?>&nbsp;&nbsp;&nbsp;</font><br>
+    total: <?php print_r(count($result)); ?>&nbsp;&nbsp;</font><br>
     <button class="button5" onclick="window.print()">Print this page</button>
 <!--    <button onclick="document.getElementById('background').background='images/3_3.jpg'"><i class="fa-solid fa-play"></i></button>
     <button onclick="document.getElementById('background').background='images/1_3.jpg'"><i class="fa-solid fa-play"></i></button>
     <button onclick="document.getElementById('background').background='images/0_2.jpg'"><i class="fa-solid fa-play"></i></button>
 --></div>
-<div align="center">
-<?php
-/*    if(isset($_POST['datapost'])) {
-        $_SESSION['No'] = $_POST['No'];
-        $_SESSION['team'] = $_POST['team'];
-        $_SESSION['name'] = $_POST['name'];
-        $_SESSION['league_id'] = $_POST['league_id'];
-        header('Location: pages/regist.php');} */?><!--
-    <form id="form2" action="" method="post">
-        <input type="int" name="No" placeholder="No"><br>
-        <input type="text" id="name" name="name" placeholder="name" oninput="checkName()"><br>
-        <input type="text" name="team" placeholder="team"><br><br><font color='Lime'>
-            <input type="radio" name="league_id" value="5">Ligue 1
-            <input type="radio" name="league_id" value="4">La Liga
-            <input type="radio" name="league_id" value="2">Serie A
-            <input type="radio" name="league_id" value="3">Bundesliga
-            <input type="radio" name="league_id" value="1">Premium League
+<div align="center" class="box box2">
+    <form name="form2" id="form2" action="pages/regist4.php" method="post">
+        <input type="int" name="No2" placeholder="No"><br>
+        <input type="text" id="name" name="name2" placeholder="name" oninput="checkName()"><br>
+        <input type="text" name="team2" placeholder="team"><br><br><font color='Lime'>
+            <input type="radio" name="league_id2" value="5">Ligue 1
+            <input type="radio" name="league_id2" value="4">La Liga
+            <input type="radio" name="league_id2" value="2">Serie A
+            <input type="radio" name="league_id2" value="3">Bundesliga
+            <input type="radio" name="league_id2" value="1">Premium League
         </font>
-        <br><br>
-        <button type="submit" name="datapost" id="button" class="black_button">
-        <i class="fa-regular fa-futbol"></i> Kick off！</button></form>-->
+        <br>
+        <button type="submit" name="datapost" class="button3">
+        <i class="fa-regular fa-futbol"></i> Kick off！</button></form>
 
     <p>
         <a href="submit.php">go back to index</a>
     </p>
 </div>
-
+</div>
 <?php
 if(!isset($_SESSION["user_name"])) {
     header("Location: pages/ban.php");} ?>

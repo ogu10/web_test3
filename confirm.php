@@ -9,7 +9,7 @@ include 'pages/connection.php';
     if($rows = $stmt->fetch()) {
         if($rows["pass"] ==  $_SESSION['pass']) {
             $_SESSION["user_name"] = $_SESSION["name"];
-            header('Location: submit.php');
+            header('Location: players_list5.php');
         }else {
             print "<p>ログイン失敗 Passがちがうよ</p>";
             echo "<a href=index.php><button type=button> もどる！ </button></a>";
