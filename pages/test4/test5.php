@@ -15,7 +15,7 @@
 <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
 <script src="pages/function.js"></script>
 <div align="right">
-    <a href="pages/log_out.php">
+    <a href="../log_out.php">
         <button type="button" name="out_button" id="button">
             <i class="fa-solid fa-right-from-bracket"></i> log out</button></a>&nbsp;&nbsp;</div>
 <body id="background" background="../../images/4_9.jpg" alt="objectfit"></body>
@@ -25,10 +25,21 @@
 </div>
 <br>
 <div align='center'>
-    <font color=red>
+    <font color=yellow>
 <?php
 include '../connection.php';
-
+if($_SESSION['message']){
+/*echo $_SESSION['message'];*/
+if($_SESSION['message'] == "success"){
+    echo "上手くいったっぽいっす";
+    }else{
+    echo "もうあるって";
+}}
+$_SESSION['message'] = "";
+/*echo "<br>";
+echo $_SESSION['message'];*/ ?>
+    </font><font color=red>
+<?php
 $sortBy = isset($_GET["column"])? $_GET["column"] : "id";
 $sortOrder = isset($_GET["sort"])? $_GET["sort"] : "DESC";
 $searchName = isset($_GET["search_word"])? $_GET["search_word"] : '';
@@ -69,10 +80,10 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             <div class="submitForm"><font color='Yellow'>
                     <h1>Add Form!</h1></font>
                 <form name="form2" id="form2" action="../regist4.php" method="post">
-                    <input type="int" id="no2" name="no2" placeholder="No"><br>
+                    <input type="int" id="no2" name="no2" placeholder="No"  value="8888"><br>
                     <input type="text" id="name2" name="name2" placeholder="name" oninput="checkName()"><br>
                     <input type="text" id="team2" name="team2" placeholder="team"><br><br><font color='Lime'>
-                        <input type="radio" name="league_id2" value="5">Ligue 1
+                        <input type="radio" name="league_id2" value="5" checked>Ligue 1
                         <input type="radio" name="league_id2" value="4">La Liga
                         <input type="radio" name="league_id2" value="2">Serie A<br>
                         <input type="radio" name="league_id2" value="3">Bundesliga
