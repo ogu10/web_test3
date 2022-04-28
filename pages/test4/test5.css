@@ -66,5 +66,5 @@ table tr:last-child td:last-child {border-radius: 0 0 5px 0;}
 .submitForm{
     position: relative; /* 今の位置を基準 */
     top: 100px; /* 上から10px */
-    left: 40px; /* 左から20px */
+    left: 58px; /* 左から20px */
 }

@@ -4,10 +4,10 @@ error_reporting(E_ALL);
 session_start();
 include 'connection.php';
 
-$No = ($_POST['No2'])?($_POST['No2']):"88";//ユーザーから受け取った値を変数に入れる
-$name = ($_POST['name2']='')?($_POST['name2']):"イニエスタ";//ユーザーから受け取った値を変数に入れる
-$team = ($_POST['team2'])?($_POST['team2']):"ヴィッセル神戸";//ユーザーから受け取った値を変数に入れる
-$league_id = ($_POST['league_id2'])?($_POST['league_id2']):"1";//ユーザーから受け取った値を変数に入れる
+$No = ($_POST['no2'])? $_POST['no2']:"8888";//ユーザーから受け取った値を変数に入れる
+$name = ($_POST['name2'])? $_POST['name2']:"???";//ユーザーから受け取った値を変数に入れる
+$team = ($_POST['team2'])? $_POST['team2'] :"?????";//ユーザーから受け取った値を変数に入れる
+$league_id = ($_POST['league_id2'])? $_POST['league_id2']:"1";//ユーザーから受け取った値を変数に入れる
 $stmt = $dbh -> prepare("INSERT INTO players(No,name,team,league_id) VALUES(:No,:name,:team,:league_id)");//登録準備
 $stmt -> bindValue(':name', $name, PDO::PARAM_STR);//登録する文字の型を固定
 $stmt -> bindValue(':team', $team, PDO::PARAM_STR);//登録する文字の型を固定

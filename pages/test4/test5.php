@@ -69,9 +69,9 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             <div class="submitForm"><font color='Yellow'>
                     <h1>Add Form!</h1></font>
                 <form name="form2" id="form2" action="../regist4.php" method="post">
-                    <input type="int" name="No2" placeholder="No"><br>
-                    <input type="text" id="name" name="name2" placeholder="name" oninput="checkName()"><br>
-                    <input type="text" name="team2" placeholder="team"><br><br><font color='Lime'>
+                    <input type="int" id="no2" name="no2" placeholder="No"><br>
+                    <input type="text" id="name2" name="name2" placeholder="name" oninput="checkName()"><br>
+                    <input type="text" id="team2" name="team2" placeholder="team"><br><br><font color='Lime'>
                         <input type="radio" name="league_id2" value="5">Ligue 1
                         <input type="radio" name="league_id2" value="4">La Liga
                         <input type="radio" name="league_id2" value="2">Serie A<br>
@@ -79,7 +79,7 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
                         <input type="radio" name="league_id2" value="1">Premium League
                     </font>
                     <br><br>
-                    <button type="submit" name="datapost" class="button3">
+                    <button type="button" name="datapost" class="button3" onclick="checkBlank()">
                         <i class="fa-regular fa-futbol"></i> Add it！</button></form>
             </div></div>
 
@@ -179,6 +179,25 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
         if(answer){
             document.getElementById('deleteID').value = target_value;
             document.form1.submit();
+        }
+    }
+
+    function checkBlank(){
+        var playerNumber = document.getElementById("no2").value;
+        var playerName = document.getElementById("name2").value;
+        if(playerNumber && playerName){
+            document.form2.submit();
+        }else if(playerNumber){
+            if(!isNaN(playerNumber)){
+                var answer2 = window.confirm('えname入れないの？');
+                if(answer2){document.form2.submit();}
+            }else{
+                alert('数字で入れろよ');
+            }
+        }else if(!(playerNumber) && !(playerName)){
+            alert('なんか入れなよ');
+        }else{
+            alert('numberを入れろよ');
         }
     }
 
