@@ -12,10 +12,10 @@ $league_id = ($_POST['league_id2'])? $_POST['league_id2']:"1";//ユーザーか�
 $checkQuery = $query =  "SELECT * FROM players WHERE `name` = '$name' ";
 $checkAction = $dbh->query($checkQuery);
 $checkResult = $checkAction->fetchAll(PDO::FETCH_ASSOC);
-print_r($checkResult);
-$_SESSION['message'] = "ダメでした";
+/*print_r($checkResult);
+$_SESSION['message'] = "ダメでした";*/
 if($checkResult){
-    echo "もうあるって";
+    /*echo "もうあるって";*/
     $_SESSION['message'] = "もうあるって";
     header('location: test4/test5.php');
 }else{
@@ -26,7 +26,7 @@ if($checkResult){
     $stmt->bindValue(':league_id', $league_id, PDO::PARAM_STR);//登録する文字の型を固定
     $stmt->execute();//データベースの登録を実行
     $dbh = NULL;//データベース接続を解除
-    echo "new one";
+    /*echo "new one";*/
     $_SESSION['message'] = "success";
     header('location: test4/test5.php');
 }
