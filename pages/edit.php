@@ -40,7 +40,7 @@ try {$dbh = new PDO("mysql:host=localhost; dbname=jobins; charset=utf8", "root",
     </div>
     <br><h2>
         <a onclick="goForIndex()" ><i class="fa-regular fa-futbol"></i> Go to Index</a><br>
-        <a href="../players_list5.php"><i class="fa-solid fa-list"></i> Answer list</a>
+        <a href="test4/test5.php"><i class="fa-solid fa-list"></i> Answer list</a>
     </h2>
     </body>
 </html>
@@ -49,7 +49,7 @@ try {$dbh = new PDO("mysql:host=localhost; dbname=jobins; charset=utf8", "root",
     function goForIndex(){
         var answer=window.confirm('【Caution!】\nAre you sure to left?');
         if(answer){
-            window.location.href= "../players_list5.php";
+            window.location.href= "test4/test5.php";
         }else{
         }}
 </script>

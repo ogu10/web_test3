@@ -11,13 +11,13 @@
 </div >
 <?php session_start();
 /*header("Refresh:2");*/?>
-you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</font>"; ?>
+<font color='white'>&nbsp;you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</font>"; ?>
 <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
 <script src="pages/function.js"></script>
 <div align="right">
     <a href="pages/log_out.php">
         <button type="button" name="out_button" id="button">
-            <i class="fa-solid fa-right-from-bracket"></i> log out</button></a></div>
+            <i class="fa-solid fa-right-from-bracket"></i> log out</button></a>&nbsp;&nbsp;</div>
 <body id="background" background="../../images/4_9.jpg" alt="objectfit"></body>
 <!--    <div class="main_imgBox">
         <div class="main_img" style="background-image: url(images/3_3.jpg)"></div>
@@ -51,9 +51,9 @@ $del = $dbh->prepare('DELETE FROM players WHERE id = :id');
 $del->execute(array(':id' => $deleteID));
 /*echo $deleteID;*/
 if($array == ''){
-    $query =  "SELECT * FROM players WHERE `name` LIKE '%$searchName%' ORDER BY $sortBy $sortOrder, Length(team)";
+    $query =  "SELECT * FROM players WHERE `name` LIKE '%$searchName%' ORDER BY $sortBy $sortOrder, Length(team) LIMIT 14";
 }else{
-    $query =  "SELECT * FROM players WHERE `name` LIKE '%$searchName%' AND `team` IN ($array) ORDER BY $sortBy $sortOrder, Length(team)";}
+    $query =  "SELECT * FROM players WHERE `name` LIKE '%$searchName%' AND `team` IN ($array) ORDER BY $sortBy $sortOrder, Length(team) LIMIT 14";}
 /*var_dump($query);*/
 
 $result = 0;
@@ -65,8 +65,30 @@ $result_t = $teams->fetchAll(PDO::FETCH_ASSOC);
 $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
 ?>
 <div class="wrap">
+        <div align="center" class="box box2">
+            <div class="submitForm"><font color='Yellow'>
+                    <h1>Add Form!</h1></font>
+                <form name="form2" id="form2" action="../regist4.php" method="post">
+                    <input type="int" name="No2" placeholder="No"><br>
+                    <input type="text" id="name" name="name2" placeholder="name" oninput="checkName()"><br>
+                    <input type="text" name="team2" placeholder="team"><br><br><font color='Lime'>
+                        <input type="radio" name="league_id2" value="5">Ligue 1
+                        <input type="radio" name="league_id2" value="4">La Liga
+                        <input type="radio" name="league_id2" value="2">Serie A<br>
+                        <input type="radio" name="league_id2" value="3">Bundesliga
+                        <input type="radio" name="league_id2" value="1">Premium League
+                    </font>
+                    <br><br>
+                    <button type="submit" name="datapost" class="button3">
+                        <i class="fa-regular fa-futbol"></i> Add it！</button></form>
+            </div></div>
+
+
     <div class="box box1">
-        <form name="form1" id="form1" action="players_list5.php" method="GET">
+        <form name="form1" id="form1" action="test5.php" method="GET">
+            <br><br>
+            <font color='red'>
+                <h1>Search Form!</h1></font>
             <input type="text" id="search_word" name="search_word" placeholder="search name"  value="<?php echo $searchName ?>">
             <input type="button" value="clear" onclick="clearName()" /><br><br><b>
                 <?php $x=1; foreach ($result_t as $value_t): ?>
@@ -78,7 +100,7 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             <input type="hidden" name="column" id="searchColumn" value="<?php echo $sortBy ?>">
             <input type="hidden" name="deleteID" id="deleteID" value="<?php echo $deleteID ?>">
             <button type="submit" id="submitButton" class="button3">
-                <i class="fa-regular fa-futbol"></i> Search it！</button><br>
+                <i class="fa-regular fa-futbol"></i> Search it！</button><br><br>
 
         <table class="players_list">
             <th>No. <button class='button5' type="submit" onclick="sortFunction('No')"><i class="fa-solid fa-bars"></i></button>
@@ -112,23 +134,6 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
                     <?php $x++ ?>
                     <?php endforeach ?>
         </table></form>
-
-    </div>
-    <div align="center" class="box box2">
-        <form name="form2" id="form2" action="../regist4.php" method="post">
-            <input type="int" name="No2" placeholder="No"><br>
-            <input type="text" id="name" name="name2" placeholder="name" oninput="checkName()"><br>
-            <input type="text" name="team2" placeholder="team"><br><br><font color='Lime'>
-                <input type="radio" name="league_id2" value="5">Ligue 1
-                <input type="radio" name="league_id2" value="4">La Liga
-                <input type="radio" name="league_id2" value="2">Serie A
-                <input type="radio" name="league_id2" value="3">Bundesliga
-                <input type="radio" name="league_id2" value="1">Premium League
-            </font>
-            <br>
-            <button type="submit" name="datapost" class="button3">
-                <i class="fa-regular fa-futbol"></i> Kick off！</button></form>
-    </div>
 </div>
 
 
@@ -176,6 +181,5 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             document.form1.submit();
         }
     }
-
 
 </script>

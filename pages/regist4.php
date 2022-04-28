@@ -4,10 +4,10 @@ error_reporting(E_ALL);
 session_start();
 include 'connection.php';
 
-$No = isset($_POST['No2'])?($_POST['No2']):"";//ユーザーから受け取った値を変数に入れる
-$name = isset($_POST['team2'])?($_POST['team2']):"";//ユーザーから受け取った値を変数に入れる
-$team = isset($_POST['name2'])?($_POST['name2']):"";//ユーザーから受け取った値を変数に入れる
-$league_id = isset($_POST['league_id2'])?($_POST['league_id2']):"1";//ユーザーから受け取った値を変数に入れる
+$No = ($_POST['No2'])?($_POST['No2']):"0000";//ユーザーから受け取った値を変数に入れる
+$name = ($_POST['name2']='')?($_POST['name2']):"???";//ユーザーから受け取った値を変数に入れる
+$team = ($_POST['team2'])?($_POST['team2']):"FC東京";//ユーザーから受け取った値を変数に入れる
+$league_id = ($_POST['league_id2'])?($_POST['league_id2']):"1";//ユーザーから受け取った値を変数に入れる
 $stmt = $dbh -> prepare("INSERT INTO players(No,name,team,league_id) VALUES(:No,:name,:team,:league_id)");//登録準備
 $stmt -> bindValue(':name', $name, PDO::PARAM_STR);//登録する文字の型を固定
 $stmt -> bindValue(':team', $team, PDO::PARAM_STR);//登録する文字の型を固定
@@ -15,6 +15,7 @@ $stmt -> bindValue(':No', $No, PDO::PARAM_STR);//登録する文字の型を固�
 $stmt -> bindValue(':league_id', $league_id, PDO::PARAM_STR);//登録する文字の型を固定
 $stmt -> execute();//データベースの登録を実行
 $dbh = NULL;//データベース接続を解除
+header('location: test4/test5.php');
 ?>
 
 <div align='center'>
@@ -33,7 +34,7 @@ $dbh = NULL;//データベース接続を解除
     <br>
     <p>
         <a href="../submit.php">go back to index</a><br><br>
-        <a href="../players_list5.php">go to answer list!</a>
+        <a href="test4/test5.php">go to answer list!</a>
     </p>
 
     <!--    <div style="padding: 10px; margin-bottom: 10px; width:300px; border: 5px double #333333; background-color: white;">
