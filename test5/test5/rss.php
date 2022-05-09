@@ -15,10 +15,12 @@ $rssList = $data['feedurl'];
 
 //同時呼び出し
 $rssdataRaw = multiRequest($rssList);
+/*echo count($rssdataRaw);*/
 for($n=0;$n<count($rssdataRaw);$n++)
 {
     //URL設定
     $rssdata = simplexml_load_string($rssdataRaw[$n], 'SimpleXMLElement', LIBXML_NOCDATA);
+    /*print_r($rssdata->channel->item);*/
     if($rssdata->channel->item) $rssdata = $rssdata->channel;
     if($rssdata->item)
     {
