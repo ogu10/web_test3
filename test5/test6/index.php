@@ -14,16 +14,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/web_test3/pages/test4/Mr_button.css">
+    <body id="background" style="background: burlywood" alt="objectfit"></body>
 <!--    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/pokemon-font.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
     <div align="center"><br><br>
-    <title>ポケモンWeb図鑑</title>
+    <title>PokeAPI</title>
 </head>
 
 <body>
 <header>
-    <h1><a href="">ポケモンWeb図鑑</a></h1>
+    <h1><a href="">PokeAPI!</a></h1>
 </header>
 
 <main>
