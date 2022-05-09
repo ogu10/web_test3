@@ -73,9 +73,9 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
                     <input type="text" id="name2" name="name2" placeholder="name" oninput="checkName()"><br>
                     <input type="text" id="team2" name="team2" placeholder="team"><br><br><font color='Lime'>
                                 <font color=#ff4500><b>
-                                    <?php
-                                    if($_SESSION['message']){
-                                        /*echo $_SESSION['message'];*/
+<!--                                    --><?php
+/*                                    if($_SESSION['message']){
+                                        echo $_SESSION['message'];
                                         if($_SESSION['message'] == "success"){
                                             echo "上手くいったっぽいっす☆";
                                         }else{
@@ -94,7 +94,7 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
                         <input type="radio" name="league_id2" value="1" checked>Premium League
                     </font>
                     <br><br>
-                    <button type="button" name="datapost" class="button3" onclick="checkBlank()">
+                    <button type="button" id="addButton" name="datapost" class="button3" /*onclick="checkBlank()*/">
                         <i class="fa-regular fa-futbol"></i> Add it！</button></form>
             </div></div>
 
@@ -150,8 +150,46 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
                     <?php endforeach ?>
         </table></form>
 </div>
-
-
+    <ul id="result" class="ajax"></ul>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    $(function() {
+        // ［検索］ボタンクリックで検索開始
+        $('#addButton').click(function() {
+            // .phpファイルへのアクセス
+            $.ajax('test7.php',
+                {
+                    type: 'get',
+                    data: { query: $('#name2').val() },
+                    dataType: 'xml'
+                }
+            )
+                // 検索成功時にはページに結果を反映
+                .done(function(data) {
+                    // 結果リストをクリア
+                    $('#result').empty();
+                    // <Question>要素（個々の質問情報）を順番に処理
+                    $('Question', data).each(function() {
+                        // <Url>（詳細ページ）、<Content>（質問本文）を基にリンクリストを生成
+                        $('#result').append(
+                            $('<li></li>').append(
+                                $('<a></a>')
+                                    .attr({
+                                        href: $('Url', this).text(),
+                                        target: '_blank'
+                                    })
+                                    .text($('Content', this).text().substring(0, 255) + '...')
+                            )
+                        );
+                    });
+                })
+                // 検索失敗時には、その旨をダイアログ表示
+                .fail(function() {
+                    window.alert('正しい結果を得られませんでした。');
+                });
+        });
+    });
+</script>
 <script>
     function sortFunction(param){
         var oldSortColumn = "<?php echo $sortBy; ?>"
