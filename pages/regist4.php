@@ -17,7 +17,7 @@ $_SESSION['message'] = "ダメでした";*/
 if($checkResult){
     /*echo "もうあるって";*/
     $_SESSION['message'] = "もうあるって";
-    header('location: test4/test5.php');
+    header('location: test7/test7.php');
 }else{
     $stmt = $dbh->prepare("INSERT INTO players(No,name,team,league_id) VALUES(:No,:name,:team,:league_id)");//登録準備
     $stmt->bindValue(':name', $name, PDO::PARAM_STR);//登録する文字の型を固定
@@ -28,7 +28,7 @@ if($checkResult){
     $dbh = NULL;//データベース接続を解除
     /*echo "new one";*/
     $_SESSION['message'] = "success";
-    header('location: test4/test5.php');
+    header('location: test7/test7.php');
 }
 ?>
 
@@ -48,7 +48,7 @@ if($checkResult){
     <br>
     <p>
         <a href="../submit.php">go back to index</a><br><br>
-        <a href="test4/test5.php">go to answer list!</a>
+        <a href="test7/test7.php">go to answer list!</a>
     </p>
 
     <!--    <div style="padding: 10px; margin-bottom: 10px; width:300px; border: 5px double #333333; background-color: white;">
