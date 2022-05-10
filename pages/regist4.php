@@ -48,7 +48,7 @@ if($checkResult){
     <br>
     <p>
         <a href="../submit.php">go back to index</a><br><br>
-        <a href="test7/test7.php">go to answer list!</a>
+        <a href="test7/test8.php">go to answer list!</a>
     </p>
 
     <!--    <div style="padding: 10px; margin-bottom: 10px; width:300px; border: 5px double #333333; background-color: white;">

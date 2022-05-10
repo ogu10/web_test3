@@ -1,9 +1,7 @@
 // 画面を更新する処理
 function appendList(data) {
     $.each(data, function(num, data) {
-        $('#list ul').append('
-        ' + "名前:" + data.name + "
-        年齢:" + data.age + '');
+        $('#list ul').append('' + "名前:" + data.name + "年齢:" + data.age + '');
     });
 }
 // エラー処理
@@ -24,3 +22,12 @@ $.ajax(jqueryParam)
     .fail(function (jqXHR, textStatus, errorThrown) {
         error(jqXHR.responseText);
     });
+
+$(document).ready(function(){
+    $("input").focus(function(){
+        $(this).css("background-color", "yellow");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "green");
+    });
+});

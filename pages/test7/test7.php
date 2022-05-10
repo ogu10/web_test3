@@ -14,6 +14,7 @@
 <font color='white'>&nbsp;you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</font>"; ?>
 <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
 <script src="pages/function.js"></script>
+<script src="test8.js"></script>
 <div align="right">
     <a href="../log_out.php">
         <button type="button" name="out_button" id="button">
