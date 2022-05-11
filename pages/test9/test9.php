@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="/web_test3/pages/test7/test5.css">
     <link rel="stylesheet" href="/web_test3/pages/test7/test4.css">
     <link rel="stylesheet" href="/web_test3/pages/test7/Mr_button.css">
+    <link rel="stylesheet" href="/web_test3/pages/test9/test9.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="addForm.js"></script>
     <!--<link rel="stylesheet" href="/web_test3/pages/style1.css">--></head>
@@ -71,11 +72,12 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             <div class="submitForm">
                 <font color='Yellow'>
                     <h1 id="title9">Add Form!</h1></font>
+                <div class="cnt_area"><span class="now_cnt">0</span> / 140</div>
                 <form name="form2" id="form2" action="regist9.php" method="post">
                     <div id="no-group" class="form-group">
-                        <input type="int" id="no2" name="no2" placeholder="No"  value="8888"></div>
+                        <input type="int" id="no2" name="no2" placeholder="No" value="8888"></div>
                     <div id="name-group" class="form-group">
-                        <input type="text" id="name2" name="name2" placeholder="name"></div>
+                        <input type="text" id="name2" class="name2" name="name2" placeholder="name"></div>
                     <div id="team-group" class="form-group">
                         <input type="text" id="team2" name="team2" placeholder="team"></div><br><font color='Lime'>
                                 <font color=#00bfff><b>

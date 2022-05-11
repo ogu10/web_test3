@@ -42,7 +42,7 @@ table tr:nth-child(odd){
 table th{
     text-align: center;
     color:white;
-    background: linear-gradient(white,red);
+    background: linear-gradient(darkred,red);
     border-left: 1px solid #3c6690;
     border-top: 1px solid #3c6690;
     border-bottom: 1px solid #3c6690;

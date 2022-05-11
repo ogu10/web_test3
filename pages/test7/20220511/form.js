@@ -1,54 +1,28 @@
-$(document).ready(function () {
-    $("form").submit(function (event) {
-        $(".form-group").removeClass("has-error");
-        $(".help-block").remove();
-        var formData = {
-            name: $("#name").val(),
-            email: $("#email").val(),
-            superheroAlias: $("#superheroAlias").val(),
-        };
 
-        $.ajax({
-            type: "POST",
-            url: "process.php",
-            data: formData,
-            dataType: "json",
-            encode: true,
-        }).done(function (data) {
-            console.log(data);
-            if (!data.success) {
-                if (data.errors.name) {
-                    $("#name-group").addClass("has-error");
-                    $("#name-group").append(
-                        '<div class="help-block">' + data.errors.name + "</div>"
-                    );
-                }
+jQuery(function($){
+//入力時のイベント
+$('.sample').on('input', function(){
+    //文字数を取得
+    var cnt = $(this).val().length;
+    //現在の文字数を表示
+    $('.now_cnt').text(cnt);
+/*    if(cnt > 0 && 140 > cnt){
+        //1文字以上かつ140文字以内の場合はボタンを有効化＆黒字
+        $('.sample_btn').prop('disabled', false);
+        $('.cnt_area').removeClass('cnt_danger');
+    }else{
+        //0文字または140文字を超える場合はボタンを無効化＆赤字
+        $('.sample_btn').prop('disabled', true);
+        $('.cnt_area').addClass('cnt_danger');
+    }*/
+})});
 
-                if (data.errors.email) {
-                    $("#email-group").addClass("has-error");
-                    $("#email-group").append(
-                        '<div class="help-block">' + data.errors.email + "</div>"
-                    );
-                }
+/*
+//リロード時に初期文字列が入っていた時の対策
+$('.sample').trigger('input');
 
-                if (data.errors.superheroAlias) {
-                    $("#superhero-group").addClass("has-error");
-                    $("#superhero-group").append(
-                        '<div class="help-block">' + data.errors.superheroAlias + "</div>"
-                    );
-                }
-            } else {
-                $("form").html(
-                    '<div class="alert alert-success">' + data.message + "</div>"
-                );
-            }
-        })
-            .fail(function (data) {
-            $("form").html(
-                '<div class="alert alert-danger">Could not reach server, please try again later.</div>'
-            );
-        });
-
-        event.preventDefault();
-    });
+//ボタンクリック時　実運用時はsubmit送信などを行うと思います
+$('.sample_btn').click(function(){
+alert('送信できる状態です！');
 });
+});*/
