@@ -11,14 +11,14 @@
 </div >
 <?php session_start();
 /*header("Refresh:2");*/?>
-<font color='white'>&nbsp;you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</font>"; ?>
-<script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
-<script src="pages/function.js"></script>
-<script src="test8.js"></script>
-<div align="right">
-<a href="../log_out.php">
-<button type="button" name="out_button" id="button">
-<i class="fa-solid fa-right-from-bracket"></i> log out</button></a>&nbsp;&nbsp;</div>
+    <font color='white'>&nbsp;you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</font>"; ?>
+    <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
+    <script src="../function.js"></script>
+    <script src="20220511/form.js"></script>
+     <div align="right">
+        <a href="../log_out.php">
+            <button type="button" name="out_button" id="button">
+            <i class="fa-solid fa-right-from-bracket"></i> log out</button></a>&nbsp;&nbsp;</div>
 <body id="background" background="../images/7_7.jpg" alt="objectfit"></body>
 <!--    <div class="main_imgBox">
 <div class="main_img" style="background-image: url(images/3_3.jpg)"></div>
@@ -64,8 +64,8 @@ include '../connection.php';
     $result_t = $teams->fetchAll(PDO::FETCH_ASSOC);
     $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
 ?>
-<button type="button" id="button78">Start!</button>
-<div class="wrap" style="display: none">
+<!--<button type="button" id="button78">Start!</button>-->
+<div class="wrap">
 <div align="center" class="box box2">
     <div class="submitForm">
         <font color='Yellow'>
@@ -74,9 +74,8 @@ include '../connection.php';
             <input type="int" id="no2" name="no2" placeholder="No"  value="8888"><br>
             <input type="text" id="name2" name="name2" placeholder="name" oninput="checkName()"><br>
             <input type="text" id="team2" name="team2" placeholder="team"><br><br><font color='Lime'>
-                <font color=#ff4500><b>
-                        <!--                                    --><?php
-                        /*                                    if($_SESSION['message']){
+            <?php
+/*                        /*                                    if($_SESSION['message']){
                                                                 echo $_SESSION['message'];
                                                                 if($_SESSION['message'] == "success"){
                                                                     echo "上手くいったっぽいっす☆";
@@ -96,7 +95,7 @@ include '../connection.php';
                 <input type="radio" name="league_id2" value="1" checked>Premium League
             </font>
             <br><br>
-            <button type="button" id="addButton" name="datapost" class="button3" /*onclick="checkBlank()*/">
+            <button type="submit" id="addButton" name="datapost" class="button3" /*onclick="checkBlank()*/">
             <i class="fa-regular fa-futbol"></i> Add it！</button></form>
     </div></div>
 
@@ -161,50 +160,15 @@ include '../connection.php';
         });
     });*/
 
-    $(document).ready(function(){
+/*    $(document).ready(function(){
         $("#button78").click(function(){
-            $(".wrap").fadeToggle(2000);
-/*            $(".box1").slideDown(2000);*/
-            $("#button78").hide(2000);
-        });
-    });
-
-    /*$(function() {
-        // ［検索］ボタンクリックで検索開始
-        $('#addButton').click(function() {
-            // .phpファイルへのアクセス
-            $.ajax('test8.php',
-                {
-                    type: 'get',
-                    data: { query: $('#name2').val() },
-                    dataType: 'xml'
-                }
-            )
-                // 検索成功時にはページに結果を反映
-                .done(function(data) {
-                    // 結果リストをクリア
-                    $('#result').empty();
-                    // <Question>要素（個々の質問情報）を順番に処理
-                    $('Question', data).each(function() {
-                        // <Url>（詳細ページ）、<Content>（質問本文）を基にリンクリストを生成
-                        $('#result').append(
-                            $('<li></li>').append(
-                                $('<a></a>')
-                                    .attr({
-                                        href: $('Url', this).text(),
-                                        target: '_blank'
-                                    })
-                                    .text($('Content', this).text().substring(0, 255) + '...')
-                            )
-                        );
-                    });
-                })
-                // 検索失敗時には、その旨をダイアログ表示
-                .fail(function() {
-                    window.alert('正しい結果を得られませんでした。');
-                });
+            $(".wrap").fadeToggle(1000);
+/!*            $(".box1").slideDown(2000);*!/
+            $("#button78").hide(1000);
         });
     });*/
+
+
 </script>
 <script>
     function sortFunction(param){
@@ -222,7 +186,7 @@ include '../connection.php';
     /*checkbox1.onclick = clearName();*/
     const checkbox1 = document.getElementsByName("team_belongings[]")
     /*var elements = document.getElementById("elementNumber").value;*/
-    function clearName(){
+/*    function clearName(){
         var search_word = document.getElementById("search_word");
 
         let count = 0;
@@ -236,7 +200,7 @@ include '../connection.php';
             search_word.value = '';
             for(i = 0; i <= checkbox1.length; i++) {
                 checkbox1[i].checked = false}
-        }}
+        }}*/
 
 
     function deleteFunc(target){

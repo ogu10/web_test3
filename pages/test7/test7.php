@@ -154,44 +154,6 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
     <ul id="result" class="ajax"></ul>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-    $(function() {
-        // ［検索］ボタンクリックで検索開始
-        $('#addButton').click(function() {
-            // .phpファイルへのアクセス
-            $.ajax('test7.php',
-                {
-                    type: 'get',
-                    data: { query: $('#name2').val() },
-                    dataType: 'xml'
-                }
-            )
-                // 検索成功時にはページに結果を反映
-                .done(function(data) {
-                    // 結果リストをクリア
-                    $('#result').empty();
-                    // <Question>要素（個々の質問情報）を順番に処理
-                    $('Question', data).each(function() {
-                        // <Url>（詳細ページ）、<Content>（質問本文）を基にリンクリストを生成
-                        $('#result').append(
-                            $('<li></li>').append(
-                                $('<a></a>')
-                                    .attr({
-                                        href: $('Url', this).text(),
-                                        target: '_blank'
-                                    })
-                                    .text($('Content', this).text().substring(0, 255) + '...')
-                            )
-                        );
-                    });
-                })
-                // 検索失敗時には、その旨をダイアログ表示
-                .fail(function() {
-                    window.alert('正しい結果を得られませんでした。');
-                });
-        });
-    });
-</script>
-<script>
     function sortFunction(param){
         var oldSortColumn = "<?php echo $sortBy; ?>"
         if(oldSortColumn === param){
