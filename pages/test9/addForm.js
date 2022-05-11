@@ -39,9 +39,11 @@ $(document).ready(function () {
                 }
             } else {
                 $("#title9").append(
-                    '<div class="alert alert-success" style="color: lime">' + data.message + "</div>"
+                    '<div class="alert alert-success help-block" style="color: lime">' + data.message + "</div>"
                 );
-/*                $("#players_list").html('<p>'+a+'</p>');*/
+/*                $("#players_list").html(
+                   "<?php include 'table9.php' ?>"
+                );*/
             }
         });
         event.preventDefault();

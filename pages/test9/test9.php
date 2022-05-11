@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="/web_test3/pages/test7/test4.css">
     <link rel="stylesheet" href="/web_test3/pages/test7/Mr_button.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="test9.js"></script>
+    <script src="addForm.js"></script>
     <!--<link rel="stylesheet" href="/web_test3/pages/style1.css">--></head>
 <div class="bg"></div>
 <div class="bg bg2"></div>
