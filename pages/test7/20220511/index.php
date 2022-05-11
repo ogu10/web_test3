@@ -2,12 +2,12 @@
 <html>
 <head>
     <title>jQuery Form Example</title>
-    <script src="form.js"></script>
     <link
             rel="stylesheet"
             href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
     />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="form.js"></script>
 </head>
 <body>
 <div class="col-sm-6 col-sm-offset-3">

@@ -16,7 +16,6 @@ $(document).ready(function () {
             encode: true,
         }).done(function (data) {
             console.log(data);
-
             if (!data.success) {
                 if (data.errors.name) {
                     $("#name-group").addClass("has-error");
@@ -43,8 +42,12 @@ $(document).ready(function () {
                     '<div class="alert alert-success">' + data.message + "</div>"
                 );
             }
-
-            });
+        })
+            .fail(function (data) {
+            $("form").html(
+                '<div class="alert alert-danger">Could not reach server, please try again later.</div>'
+            );
+        });
 
         event.preventDefault();
     });
