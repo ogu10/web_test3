@@ -37,10 +37,14 @@ $(document).ready(function () {
                         '<div class="help-block" style="color: lime">' + data.errors.team2 + "</div>"
                     );
                 }
-            } else {
+            } else if(data.message) {
+                window.location.reload();
                 $("#title9").append(
                     '<div class="alert alert-success help-block" style="color: lime">' + data.message + "</div>"
                 );
+                print(data.message);
+                data.message = "";
+                print(data.message);
 /*                $("#players_list").html(
                    "<?php include 'table9.php' ?>"
                 );*/

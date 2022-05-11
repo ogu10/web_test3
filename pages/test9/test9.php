@@ -124,7 +124,7 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             <input type="hidden" name="deleteID" id="deleteID" value="<?php echo $deleteID ?>">
             <button type="submit" id="submitButton" class="button3">
                 <i class="fa-regular fa-futbol"></i> Search it！</button><br><br>
-
+    <div id="ajaxreLoad">
         <table id="players_list" class="players_list">
             <th>No. <button class='button5' type="submit" onclick="sortFunction('No')"><i class="fa-solid fa-bars"></i></button>
             <th>name <button class='button5' type="submit" onclick="sortFunction('name')"><i class="fa-solid fa-bars"></i></button>
@@ -156,7 +156,8 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
                     echo "</tr>\n"; ?>
                     <?php $x++ ?>
                     <?php endforeach ?>
-        </table></form>
+        </table>
+    </div></form>
 </div>
 
 <script>
