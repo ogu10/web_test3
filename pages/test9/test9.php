@@ -20,6 +20,7 @@
     <a href="../log_out.php">
         <button type="button" name="out_button" id="button">
             <i class="fa-solid fa-right-from-bracket"></i> log out</button></a>&nbsp;&nbsp;</div>
+    <a href="test9.php">reload</a>
 <body id="background" background="../images/7_7.jpg" alt="objectfit"></body>
 <!--    <div class="main_imgBox">
         <div class="main_img" style="background-image: url(images/3_3.jpg)"></div>
@@ -69,12 +70,14 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
         <div align="center" class="box box2">
             <div class="submitForm">
                 <font color='Yellow'>
-                    <h1>Add Form!</h1></font>
+                    <h1 id="title9">Add Form!</h1></font>
                 <form name="form2" id="form2" action="regist9.php" method="post">
-                    <div id="no-group">
-                        <input type="int" id="no2" name="no2" placeholder="No"  value="8888" class="no form-group"></div>
-                    <div id="name-group"><input type="text" id="name2" name="name2" placeholder="name" value="aaa" class="name form-group"></div>
-                    <div id="team-group"><input type="text" id="team2" name="team2" placeholder="team" class="team form-group"></div><br><font color='Lime'>
+                    <div id="no-group" class="form-group">
+                        <input type="int" id="no2" name="no2" placeholder="No"  value="8888"></div>
+                    <div id="name-group" class="form-group">
+                        <input type="text" id="name2" name="name2" placeholder="name"></div>
+                    <div id="team-group" class="form-group">
+                        <input type="text" id="team2" name="team2" placeholder="team"></div><br><font color='Lime'>
                                 <font color=#00bfff><b>
 <!--                                    --><?php
 /*                                    if($_SESSION['message']){
@@ -103,7 +106,7 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
 
 
     <div class="box box1">
-        <form name="form1" id="form1" action="test7.php" method="GET">
+        <form name="form1" id="form1" action="test9.php" method="GET">
             <br><br>
             <font color='red'>
                 <h1>Search Form!</h1></font>
@@ -120,7 +123,7 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             <button type="submit" id="submitButton" class="button3">
                 <i class="fa-regular fa-futbol"></i> Search it！</button><br><br>
 
-        <table class="players_list">
+        <table id="players_list" class="players_list">
             <th>No. <button class='button5' type="submit" onclick="sortFunction('No')"><i class="fa-solid fa-bars"></i></button>
             <th>name <button class='button5' type="submit" onclick="sortFunction('name')"><i class="fa-solid fa-bars"></i></button>
             <th>team <button class='button5' type="submit" onclick="sortFunction('Length(team)')"><i class="fa-solid fa-bars"></i></button>

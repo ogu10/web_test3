@@ -1,11 +1,11 @@
 $(document).ready(function () {
-    $("form").submit(function (event) {
+    $("#form2").submit(function (event) {
         $(".form-group").removeClass("has-error");
         $(".help-block").remove();
         var formData = {
-            name: $("#name2").val(),
-            no: $("#no2").val(),
-            team: $("#team2").val(),
+            name2: $("#name2").val(),
+            no2: $("#no2").val(),
+            team2: $("#team2").val(),
         };
 
         $.ajax({
@@ -17,30 +17,31 @@ $(document).ready(function () {
         }).done(function (data) {
             console.log(data);
             if (!data.success) {
-                if (data.errors.name) {
+                if (data.errors.name2) {
                     $("#name-group").addClass("has-error");
                     $("#name-group").append(
-                        '<div class="help-block" style="color: lime">' + data.errors.name + "</div>"
+                        '<div class="help-block" style="color: lime">' + data.errors.name2 + "</div>"
                     );
                 }
 
-                if (data.errors.no) {
+                if (data.errors.no2) {
                     $("#no-group").addClass("has-error");
                     $("#no-group").append(
-                        '<div class="help-block" style="color: lime">' + data.errors.no + "</div>"
+                        '<div class="help-block" style="color: lime">' + data.errors.no2 + "</div>"
                     );
                 }
 
-                if (data.errors.team) {
+                if (data.errors.team2) {
                     $("#team-group").addClass("has-error");
                     $("#team-group").append(
-                        '<div class="help-block" style="color: lime">' + data.errors.team + "</div>"
+                        '<div class="help-block" style="color: lime">' + data.errors.team2 + "</div>"
                     );
                 }
             } else {
-                $("form2").html(
-                    '<div class="alert alert-success">' + data.message + "</div>"
+                $("#title9").append(
+                    '<div class="alert alert-success" style="color: lime">' + data.message + "</div>"
                 );
+/*                $("#players_list").html('<p>'+a+'</p>');*/
             }
         });
         event.preventDefault();
