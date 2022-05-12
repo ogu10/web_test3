@@ -1,27 +1,27 @@
-button {
-    /* ブラウザ特有のスタイルを無効に */
+/*button {
+    !* ブラウザ特有のスタイルを無効に *!
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    /* 整える */
-    margin: 0.5em 0.5; /* 前後の隙間 */
-    padding: 0.6em 1em; /* 塗りの余白 */
-    font-size: 1em; /* フォントサイズ */
-    background-color: gray; /* 背景色 */
-    color: #FFF; /* テキストカラー */
-    cursor: pointer; /* カーソルを指マークに */
-    border-radius: 3px; /* 角の丸み */
-    border: 0; /* 枠線を消す */
-    transition: 0.2s; /* ホバーの変化を滑らかに */}
-/* ホバー時（カーソルをのせた時）の見た目 */
+    !* 整える *!
+    margin: 0.5em 0.5; !* 前後の隙間 *!
+    padding: 0.6em 1em; !* 塗りの余白 *!
+    font-size: 1em; !* フォントサイズ *!
+    background-color: antiquewhite; !* 背景色 *!
+    color: lightpink; !* テキストカラー *!
+    cursor: pointer; !* カーソルを指マークに *!
+    border-radius: 3px; !* 角の丸み *!
+    border: 0; !* 枠線を消す *!
+    transition: 0.2s; !* ホバーの変化を滑らかに *!}
+!* ホバー時（カーソルをのせた時）の見た目 *!
 button:hover {
-    background-color: lime; /* 背景色 */
+    background-color: hotpink; !* 背景色 *!
 }
 button[disabled] {
     color: darkred;
     background: black;
     cursor: not-allowed;
-}
+}*/
 
 .button3 {
     /* ブラウザ特有のスタイルを無効に */
@@ -32,8 +32,8 @@ button[disabled] {
     margin: 0em 0; /* 前後の隙間 */
     padding: 0.2em 0.4em; /* 塗りの余白 */
     font-size: 1em; /* フォントサイズ */
-    background-color: blue; /* 背景色 */
-    color: #FFF; /* テキストカラー */
+    background-color: black; /* 背景色 */
+    color: white; /* テキストカラー */
     cursor: pointer; /* カーソルを指マークに */
     border-radius: 3px; /* 角の丸み */
     border: 0; /* 枠線を消す */
@@ -71,7 +71,7 @@ button[disabled] {
     margin: 0.4em 0.4; /* 前後の隙間 */
     padding: 0.1em 0.3em; /* 塗りの余白 */
     font-size: 0.8em; /* フォントサイズ */
-    background-color: gray; /* 背景色 */
+    background-color: orangered; /* 背景色 */
     color: #FFF; /* テキストカラー */
     cursor: pointer; /* カーソルを指マークに */
     border-radius: 0.3px; /* 角の丸み */
@@ -81,7 +81,7 @@ button[disabled] {
 .button5:focus {
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.2em);
-    background-color: greenyellow;
+    background-color: deepskyblue;
 }
 
 .button6 {
