@@ -75,3 +75,13 @@ jQuery(function($){
     }
     })
 });
+
+//NG Word
+var ngWord = ['@','&','%','あ'];
+$('#name2').keyup(function(){
+    console.log($('#name2').match("a"));
+    if ($('#name2').val().match("a")) {
+        $("#name-group").append(
+            '<div class="alert alert-success help-block3" style="color: lime">' + "NGワード！" + "</div>");
+    }
+});
