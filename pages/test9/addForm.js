@@ -38,50 +38,47 @@ $(document).ready(function () {
                         '<div class="help-block" style="color: lime">' + data.errors.team2 + "</div>"
                     );
                 }
-            } else  {
+            } else if(data.message != ""){
                 /*window.location.reload();*/
                 $("#title9").append(
-                    '<div class="alert alert-success help-block" style="color: lime">' + data.message + "</div>"
-                );
+                    '<div class="alert alert-success help-block" style="color: lime">' + data.message + "</div>");
 
-                $.ajax({
-                    type: "POST",
-                    url: "table9.php",
-                    data: {val:"table9"},
-                    dataType: "json",
-                    encode: true,
-                }).done(function (data) {
-                $("#players_list").html(data);
-                })
+                    var iframe = document.getElementById('frametarget');
+                    // フレームをreload
+                    iframe.contentWindow.location.reload(true);
+
             }
         });
         event.preventDefault();
     });
+        //Length Check
+            jQuery(function($){
+        //入力時のイベント
+                $('#name2').keyup(function(){
+                    $(".help-block3").remove();
+                    /*        console.log($('#name2').val().length > 12);*/
+                    //文字数を取得
+                    var cnt = $(this).val().length;
+                    //現在の文字数を表示
+                    $('.now_cnt').text(cnt);
+                    if (cnt > 12){
+                        $("#name-group").append(
+                            '<div class="alert alert-success help-block3" style="color: lime">' + "字数が超えてるよ 😢" + "</div>");
+                    }
+                })
+
+            });
+
+            //NG Word
+            var ngWord = ['@','&','%','a'];
+            $('#name2').keyup(function(){
+                $(".help-block4").remove();
+/*                console.log($(this).val().includes("a"));*/
+                if ($(this).val().includes('-')) {
+                    $("#name-group").append(
+                        '<div class="alert alert-success help-block4" style="color: lime">' + "\"-\" は使えません! 🙅" + "</div>");
+                }
+            });
+
 });
 
-//Length Check
-jQuery(function($){
-//入力時のイベント
-    $('#name2').keyup(function(){
-        $(".help-block3").remove();
-/*        console.log($('#name2').val().length > 12);*/
-        //文字数を取得
-        var cnt = $(this).val().length;
-        //現在の文字数を表示
-        $('.now_cnt').text(cnt);
-    if (cnt > 12){
-        $("#name-group").append(
-            '<div class="alert alert-success help-block3" style="color: lime">' + "字数が超えてるよ 😢" + "</div>");
-    }
-    })
-});
-
-//NG Word
-var ngWord = ['@','&','%','あ'];
-$('#name2').keyup(function(){
-    console.log($('#name2').match("a"));
-    if ($('#name2').val().match("a")) {
-        $("#name-group").append(
-            '<div class="alert alert-success help-block3" style="color: lime">' + "NGワード！" + "</div>");
-    }
-});

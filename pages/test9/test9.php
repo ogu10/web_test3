@@ -1,8 +1,7 @@
 <head>
-    <link rel="stylesheet" href="/web_test3/pages/test7/test5.css">
+    <link rel="stylesheet" href="/web_test3/pages/test9/test9.css">
     <link rel="stylesheet" href="/web_test3/pages/test7/test4.css">
     <link rel="stylesheet" href="/web_test3/pages/test7/Mr_button.css">
-    <link rel="stylesheet" href="/web_test3/pages/test9/test9.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="addForm.js"></script>
     <script src="message.js"></script>
@@ -126,7 +125,8 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             <input type="hidden" name="deleteID" id="deleteID" value="<?php echo $deleteID ?>">
             <button type="submit" id="submitButton" class="button3">
                 <i class="fa-regular fa-futbol"></i> Search it！</button><br><br>
-    <div id="ajaxreLoad">
+            <iframe id="frametarget" src="table9.php" width="850" height="600"></iframe>
+<!--    <div id="ajaxLoad">
         <table id="players_list" class="players_list">
             <th>No. <button class='button5' type="submit" onclick="sortFunction('No')"><i class="fa-solid fa-bars"></i></button>
             <th>name <button class='button5' type="submit" onclick="sortFunction('name')"><i class="fa-solid fa-bars"></i></button>
@@ -134,32 +134,32 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             <th>update</th>
             <th>delete</th>
             </tr>
-            　 <?php $x=1; foreach ($result as $value): ?>
+            　 <?php /*$x=1; foreach ($result as $value): */?>
             <tr>
                 <td>
-                    　<?php echo $value['No'] ?></td>
+                    　<?php /*echo $value['No'] */?></td>
                 <td>
-                    　<?php echo $value['name'] ?>
+                    　<?php /*echo $value['name'] */?>
                     <?php
-                    if ($value["id"]== $id_max){echo "<font color='red'>"."new!"."</font>";} ?></td>
+/*                    if ($value["id"]== $id_max){echo "<font color='red'>"."new!"."</font>";} */?></td>
                 <td>
-                    　<?php /*$team_list = isset($value['team'])? $value['team']: "-no data-";*/
-                    echo $value['team']; ?></td>
+                    　<?php /*/*$team_list = isset($value['team'])? $value['team']: "-no data-";*/
+                    /*echo $value['team']; */?></td>
                 <td>
-                    <?php echo "<!--<button class=`button3`>--><a href=../edit.php?id=" . $value["id"] . ">"; ?>
+                    <?php /*echo "<!--<button class=`button3`>--><a href=../edit.php?id=" . $value["id"] . ">"; */?>
                     <i class="fa-solid fa-pen-nib"></i>
-                    <?php echo "</a>\n";
+                    <?php /*echo "</a>\n";
                     echo "<td>";
                     echo "<button class='button3' id='deleteButton' value='${value["id"]}' type= 'button' onclick='deleteFunc(this)'>";
                     echo "<input type=hidden id='name${value["id"]}' value='${value["name"]}'> ";
                     /*                echo $value["id"];*/?>
                     <i class="fa-solid fa-trash"></i>
-                    <?php echo "</button>\n";
-                    echo "</tr>\n"; ?>
-                    <?php $x++ ?>
-                    <?php endforeach ?>
+                    <?php /*echo "</button>\n";
+                    echo "</tr>\n"; */?>
+                    <?php /*$x++ */?>
+                    <?php /*endforeach */?>
         </table>
-    </div></form>
+    </div>--></form>
 </div>
 
 <script>

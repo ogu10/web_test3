@@ -18,16 +18,12 @@ $(document).ready(function () {
             dataType: "json",
             encode: true,
         }).done(function (data) {
-            console.log(data);
-            if (data.message) {
+/*            console.log(data);*/
+            if (data.message != "") {
                 /*window.location.reload();*/
                 $("#name-group").append(
                     '<div class="alert alert-success help-block" style="color: lime">' + data.message + "</div>"
                 );
-
-                /*                $("#players_list").html(
-                                   "<?php include 'table9.php' ?>"
-                                );*/
             }
         });
         event.preventDefault();
