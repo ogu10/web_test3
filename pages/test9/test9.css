@@ -26,7 +26,7 @@ body{
 }
 
 table{
-    width: 100%;
+    width: 150%;
     border-collapse:separate;
     background-color:antiquewhite;
     border-spacing: 0;
@@ -61,7 +61,7 @@ table tr:last-child td:last-child {border-radius: 0 0 5px 0;}
 .players_list{
     position: relative; /* 今の位置を基準 */
     top: -25px; /* 上から10px */
-    right: 0px; /* 左から20px */
+    right: 120px; /* 左から20px */
 }
 .submitForm{
     position: relative; /* 今の位置を基準 */

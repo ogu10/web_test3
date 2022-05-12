@@ -43,9 +43,7 @@ $(document).ready(function () {
                 $("#title9").append(
                     '<div class="alert alert-success help-block" style="color: lime">' + data.message + "</div>");
 
-                    var iframe = document.getElementById('frametarget');
-                    // フレームをreload
-                    iframe.contentWindow.location.reload(true);
+                reloadData();
 
             }
         });
@@ -82,3 +80,15 @@ $(document).ready(function () {
 
 });
 
+//deleteing confirmation
+function deleteFunc(target){
+    var target_value = target.value;
+    var nameID = 'name' + target_value
+    var name = document.getElementById(nameID).value;
+    var answer = window.confirm('【Caution!】\nYou are deleting \"' + name + '\" !!!!');
+    /*        alert('you clicked button-id: ' + target_value);*/
+    if(answer){
+        document.getElementById('deleteID').value = target_value;
+        document.form1.submit();
+    }
+}

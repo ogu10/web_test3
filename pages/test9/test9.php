@@ -125,7 +125,8 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             <input type="hidden" name="deleteID" id="deleteID" value="<?php echo $deleteID ?>">
             <button type="submit" id="submitButton" class="button3">
                 <i class="fa-regular fa-futbol"></i> Search it！</button><br><br>
-            <iframe id="frametarget" src="table9.php" width="850" height="600"></iframe>
+<!--            <iframe id="frametarget" src="table9.php" width="850" height="600"></iframe>-->
+            <div id="ajaxLoad"></div>
 <!--    <div id="ajaxLoad">
         <table id="players_list" class="players_list">
             <th>No. <button class='button5' type="submit" onclick="sortFunction('No')"><i class="fa-solid fa-bars"></i></button>
@@ -179,6 +180,9 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
     /*checkbox1.onclick = clearName();*/
     const checkbox1 = document.getElementsByName("team_belongings[]")
     /*var elements = document.getElementById("elementNumber").value;*/
+
+
+    //check-all button
     function clearName(){
         var search_word = document.getElementById("search_word");
 
@@ -228,5 +232,17 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             alert('numberを入れろよ');
         }
     }
+
+
+    function reloadData(){
+        $.get("table9.php").then(
+            function(response){
+                $("#ajaxLoad").html(response)
+            }
+        )
+    }
+    $(document).ready(function(){
+        reloadData();
+    });
 
 </script>
