@@ -76,7 +76,7 @@ $(document).ready(function () {
 /*                console.log($(this).val().includes("a"));*/
                 if ($(this).val().includes('-')) {
                     $("#name-group").append(
-                        '<div class="alert alert-success help-block4" style="color: lime">' + "\"-\" は使えません! 🙅" + "</div>");
+                        '<div class="alert alert-success help-block4" style="color: lime">' + "\" - \" は使えません! 🙅" + "</div>");
                 }
             });
 
