@@ -2,6 +2,7 @@ $(document).ready(function () {
     $("#form2").submit(function (event) {
         $(".form-group").removeClass("has-error");
         $(".help-block").remove();
+        $(".help-block2").remove();
         var formData = {
             name2: $("#name2").val(),
             no2: $("#no2").val(),
@@ -43,45 +44,34 @@ $(document).ready(function () {
                     '<div class="alert alert-success help-block" style="color: lime">' + data.message + "</div>"
                 );
 
-/*                $("#players_list").html(
-                   "<?php include 'table9.php' ?>"
-                );*/
+                $.ajax({
+                    type: "POST",
+                    url: "table9.php",
+                    data: {val:"table9"},
+                    dataType: "json",
+                    encode: true,
+                }).done(function (data) {
+                $("#players_list").html(data);
+                })
             }
         });
         event.preventDefault();
     });
 });
 
-
-
+//Length Check
 jQuery(function($){
 //入力時のイベント
-$('#name2').on('input', function(){
-    //文字数を取得
-    var cnt = $(this).val().length;
-    //現在の文字数を表示
-    $('.now_cnt').text(cnt);
-})
-
-/*    if(cnt > 0 && 140 > cnt){
-        //1文字以上かつ140文字以内の場合はボタンを有効化＆黒字
-        $('#addButton').prop('disabled', false);
-        $('.cnt_area').removeClass('cnt_danger');
-    }else{
-        //0文字または140文字を超える場合はボタンを無効化＆赤字
-        $('#addButton').prop('disabled', true);
-        $('.cnt_area').addClass('cnt_danger');
-    }*/
-
-
-
+    $('#name2').keyup(function(){
+        $(".help-block3").remove();
+/*        console.log($('#name2').val().length > 12);*/
+        //文字数を取得
+        var cnt = $(this).val().length;
+        //現在の文字数を表示
+        $('.now_cnt').text(cnt);
+    if (cnt > 12){
+        $("#name-group").append(
+            '<div class="alert alert-success help-block3" style="color: lime">' + "字数が超えてるよ 😢" + "</div>");
+    }
+    })
 });
-
-/*//リロード時に初期文字列が入っていた時の対策
-$('.sample').trigger('input');
-
-//ボタンクリック時　実運用時はsubmit送信などを行うと思います
-$('.sample_btn').click(function(){
-alert('送信できる状態です！');
-});
-});*/

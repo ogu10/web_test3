@@ -32,7 +32,7 @@ if (!empty($errors)) {
     $checkAction = $dbh->query($checkQuery);
     $checkResult = $checkAction->fetchAll(PDO::FETCH_ASSOC);
     if($checkResult) {
-        $data['message'] = "もうあるって";
+        $data['message'] = "もうあるよ！！";
     }else{
 /*    $league_id = "1";
     $league_id = ($_POST['league_id2']) ? $_POST['league_id2'] : "1";//ユーザーから受け取った値を変数に入れる*/

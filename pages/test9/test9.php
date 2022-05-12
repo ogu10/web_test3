@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="/web_test3/pages/test9/test9.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="addForm.js"></script>
+    <script src="message.js"></script>
+    <script src="checkNum.js"></script>
     <!--<link rel="stylesheet" href="/web_test3/pages/style1.css">--></head>
 <div class="bg"></div>
 <div class="bg bg2"></div>
@@ -72,7 +74,7 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             <div class="submitForm">
                 <font color='Yellow'>
                     <h1 id="title9">Add Form!</h1></font>
-                <div class="cnt_area"><span class="now_cnt">0</span> / 140</div>
+                <div class="cnt_area"><span class="now_cnt">0</span> / 12</div>
                 <form name="form2" id="form2" action="regist9.php" method="post">
                     <div id="no-group" class="form-group">
                         <input type="int" id="no2" name="no2" placeholder="No" value="8888"></div>
