@@ -6,6 +6,7 @@
     <script src="../addForm.js"></script>
     <script src="../message.js"></script>
     <script src="../checkNum.js"></script>
+    <link rel="icon" type="image/png" sizes="192x192" href="../../images/favicons/android-chrome-192x192.png">
     <!--<link rel="stylesheet" href="/web_test3/pages/style1.css">--></head>
 <div class="bg"></div>
 <div class="bg bg2"></div>
