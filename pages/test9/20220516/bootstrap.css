@@ -397,7 +397,7 @@ section {
     transform: translate(-50%, -50%);
     width: 122px;
     height: 66px;
-    background: url(../img/section-title-bg.png) no-repeat;
+    background: url(img10/section-title-bg.png) no-repeat;
     z-index: -1;
 }
 .section-title p {
@@ -547,7 +547,7 @@ section {
     left: 0;
     bottom: 0;
     top: 100%;
-    transition: all 0.3s;
+    transition: all 0.6s;
     z-index: -1;
 }
 .services .icon-box:hover::before {
@@ -562,7 +562,7 @@ section {
     font-size: 48px;
     line-height: 1;
     color: deepskyblue;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.6s ease-in-out;
 }
 .services .title {
     font-weight: 700;
