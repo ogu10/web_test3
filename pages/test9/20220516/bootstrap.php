@@ -3,10 +3,10 @@
     <link rel="stylesheet" href="/web_test3/pages/test7/test4.css">
     <link rel="stylesheet" href="/web_test3/pages/test7/Mr_button.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="addForm.js"></script>
-    <script src="message.js"></script>
-    <script src="checkNum.js"></script>
-    <link rel="icon" type="image/png" sizes="192x192" href="../images/favicons/android-chrome-192x192.png">
+    <script src="../addForm.js"></script>
+    <script src="../message.js"></script>
+    <script src="../checkNum.js"></script>
+
     <!--<link rel="stylesheet" href="/web_test3/pages/style1.css">--></head>
 <div class="bg"></div>
 <div class="bg bg2"></div>
@@ -18,13 +18,13 @@
 /*header("Refresh:2");*/?>
 <font color='white'>&nbsp;you are <?php echo "</font>"."<font color='lime'>".$_SESSION['user_name']."</font>"; ?>
     <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
-    <script src="../function.js"></script>
+    <script src="../../function.js"></script>
     <div align="right">
-        <a href="../log_out.php">
+        <a href="../../log_out.php">
             <button type="button" name="out_button" id="button">
                 <i class="fa-solid fa-right-from-bracket"></i> log out</button></a>&nbsp;&nbsp;</div>
-    <a href="test9.php">reload</a>
-    <body id="background" background="../images/7_7.jpg" alt="objectfit"></body>
+    <a href="bootstrap.php">reload</a>
+    <body id="background" background="../../images/7_7.jpg" alt="objectfit"></body>
     <!--    <div class="main_imgBox">
             <div class="main_img" style="background-image: url(images/3_3.jpg)"></div>
             <div class="main_img" style="background-image: url(images/3_2.jpg)"></div>-->
@@ -33,7 +33,7 @@
     <div align='center'>
         <font color=red>
             <?php
-            include '../connection.php';
+            include '../../connection.php';
             $sortBy = isset($_GET["column"])? $_GET["column"] : "id";
             $sortOrder = isset($_GET["sort"])? $_GET["sort"] : "DESC";
             $searchName = isset($_GET["search_word"])? $_GET["search_word"] : '';
@@ -110,7 +110,7 @@
 
 
                 <div class="box box1">
-                    <form name="form1" id="form1" action="test9.php" method="GET">
+                    <form name="form1" id="form1" action="bootstrap.php" method="GET">
                         <br><br>
                         <font color='red'>
                             <h1>Search Form!</h1></font>
@@ -236,7 +236,7 @@
 
 
                     function reloadData(){
-                        $.get("table9.php").then(
+                        $.get("../table9.php").then(
                             function(response){
                                 $("#ajaxLoad").html(response)
                             }

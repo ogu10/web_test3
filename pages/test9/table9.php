@@ -46,8 +46,8 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
 ?>
 
 
-<form name="form1" id="form1" action="test9.php" method="GET">
-    <input type="hidden" name="deleteID" id="deleteID" value="<?php echo $deleteID ?>">
+<!--<form name="form1" id="form1" action="test9.php" method="GET">
+    <input type="hidden" name="deleteID" id="deleteID" value="<?php /*echo $deleteID */?>">-->
 
 <table id="players_list" class="players_list">
     <th>No. <button class='button5' type="submit" onclick="sortFunction('No')"><i class="fa-solid fa-bars"></i></button>
@@ -94,20 +94,5 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
             {var sort = "ASC";}}
         else {
             var sort = "ASC";}}
-
-
-    //deleteing confirmation
-    function deleteFunc(target){
-        var target_value = target.value;
-        var nameID = 'name' + target_value
-        var name = document.getElementById(nameID).value;
-        var answer = window.confirm('【Caution!】\nYou are deleting \"' + name + '\" !!!!');
-        /*        alert('you clicked button-id: ' + target_value);*/
-        if(answer){
-            document.getElementById('deleteID').value = target_value;
-            document.form1.submit();
-        }
-    }
-
 
 </script>
