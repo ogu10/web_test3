@@ -16,6 +16,7 @@
     <!--    <link href="../../../Squadfree/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <!--    <script href="ajaxLoad.js"></script>-->
+    <?php include 'phpFunction.php'; ?>
 </head>
 <body>
 <header id="header" class="fixed-top header-transparent">
@@ -42,7 +43,7 @@
                     <li class="nav-item">
                         <a class="nav-link scrollto" href="#contact">Contact Us</a>
                     </li>
-                    <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+                   <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="#">Drop Down 1</a></li>
                             <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -58,7 +59,7 @@
                             <li><a href="#">Drop Down 3</a></li>
                             <li><a href="#">Drop Down 4</a></li>
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-sm-2" type="text" placeholder="Search">
@@ -137,10 +138,10 @@
             <h2>Table</h2>
             <p>てーぶるをココに</p>
         </div>
-        <div class="container col-md-6">
-            <div id="ajaxLoad"></div></div>
-        <button type="button" onclick="aaa()">a</button>
         <div class="container col-md-10">
+            <div id="ajaxLoad"></div></div>
+<!--        <button type="button" onclick="aaa()">a</button>-->
+       <!-- <div class="container col-md-10">
             <table class="table">
                 <thead>
                 <tr>
@@ -171,7 +172,7 @@
                 </tr>
                 </tbody>
             </table>
-        </div>
+        </div>-->
 
 
     </div>
@@ -323,11 +324,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 -->
 <script>
-    function aa(){
+/*    function aa(){
         alert("aa")
-    }
-    function aaa(){
-        $.get("../table9.php").then(
+    }*/
+
+    function reloadData(){
+        $.get("../table12.php").then(
             function(response){
                 $("#ajaxLoad").html(response)
             }
