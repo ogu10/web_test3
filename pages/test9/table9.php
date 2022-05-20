@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" href="/web_test3/pages/test7/test4.css">
     <link rel="stylesheet" href="/web_test3/pages/test7/Mr_button.css">
-    <link rel="stylesheet" href="/web_test3/pages/test9/test9.css">
+<!--    <link rel="stylesheet" href="/web_test3/pages/test9/test9.css">-->
     <script src="../function.js"></script>
     <script src="https://kit.fontawesome.com/2b5ebdc171.js" crossorigin="anonymous"></script>
 </head>

@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="bootstrap.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-<!--    <link href="../../../Squadfree/assets/vendor/aos/aos.css" rel="stylesheet">-->
-<!--    <link href="../../../Squadfree/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
-<!--    <link href="../../../Squadfree/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">-->
+    <!--    <link href="../../../Squadfree/assets/vendor/aos/aos.css" rel="stylesheet">-->
+    <!--    <link href="../../../Squadfree/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <!--    <link href="../../../Squadfree/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">-->
     <link href="../../../Squadfree/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-<!--    <link href="../../../Squadfree/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">-->
-<!--    <link href="../../../Squadfree/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">-->
+    <!--    <link href="../../../Squadfree/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">-->
+    <!--    <link href="../../../Squadfree/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<!--    <script href="ajaxLoad.js"></script>-->
+    <!--    <script href="ajaxLoad.js"></script>-->
 </head>
 <body>
 <header id="header" class="fixed-top header-transparent">
@@ -137,7 +137,8 @@
             <h2>Table</h2>
             <p>てーぶるをココに</p>
         </div>
-        <div id="ajaxLoad"></div>
+        <div class="container col-md-6">
+            <div id="ajaxLoad"></div></div>
         <button type="button" onclick="aaa()">a</button>
         <div class="container col-md-10">
             <table class="table">
@@ -180,7 +181,7 @@
 <!-- ======= Contact Section ======= -->
 <section id="contact" class="contact section-bg">
     <div class="container" data-aos="fade-up">
-<br>
+        <br>
         <div class="section-title">
             <h2>Contact</h2>
             <p>サービスや採用、メディア取材等のお問い合わせはこちらのフォームからお願いいたします。</p>
@@ -296,7 +297,7 @@
                         <input type="email" name="email" placeholder="e-mail address"><input type="submit" value="Subscribe">
                     </form>
                     <br><div align="right">
-                    <a href="http://localhost/web_test3/pages/test9/test9.php">Link</a></div>
+                        <a href="http://localhost/web_test3/pages/test9/test9.php">Link</a></div>
                 </div>
 
             </div>
@@ -317,9 +318,10 @@
     </div>
 </footer><!-- End Footer -->
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+-->
 <script>
     function aa(){
         alert("aa")
