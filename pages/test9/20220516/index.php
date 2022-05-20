@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Bootstrap Trial</title>
-    <link rel="icon" type="image/png" sizes="192x192" href="../../images/favicons/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../images/favicons/android-chrome-192x192.png">
     <link href="bootstrap2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="bootstrap.css" rel="stylesheet">
