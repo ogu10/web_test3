@@ -49,7 +49,7 @@ $id_max = intval($dbh->query("SELECT max(id) FROM players")->fetchColumn());
 <form name="form1" id="form1" action="index.php" method="GET">
     <input type="hidden" name="deleteID" id="deleteID" value="<?php echo $deleteID ?>"></form>
 
-<table id="players_list" class="players_list table">
+<table id="players_list" class="players_list table table-striped">
     <th>No. <button class='button5' type="submit" onclick="sortFunction('No')"><i class="fa-solid fa-bars"></i></button>
     <th>name <button class='button5' type="submit" onclick="sortFunction('name')"><i class="fa-solid fa-bars"></i></button>
     <th>team <button class='button5' type="submit" onclick="sortFunction('Length(team)')"><i class="fa-solid fa-bars"></i></button>

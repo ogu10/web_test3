@@ -1,22 +1,19 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
-<link href="test12.css" rel="stylesheet">
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.slider').bxSlider({
+            auto: true,
+            pause: 5000,
+        });
+    });
+</script>
 
-<h1>CSSでツールチップ（吹き出し）</h1>
-<br>
-<br>
-
-例1
-<span class="tooltip">
-  <span class="tooltip-text">サンプル</span>
-  Example
-</span>
-
-<br>
-<br>
-<br>
-
-例2
-<button class="tooltip">
-    ✏️
-    <span class="tooltip-text">編集する</span>
-</button>
+<div class="slider">
+    <img src="img10/a.png" width="500" height="300" alt="">
+    <img src="img10/b.png" width="500" height="300" alt="">
+    <img src="gazou3.jpg" width="500" height="300" alt="">
+    <img src="gazou4.jpg" width="500" height="300" alt="">
+</div>
