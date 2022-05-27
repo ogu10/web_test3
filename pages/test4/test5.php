@@ -1,4 +1,5 @@
 <head>
+    <link rel="icon" type="image/png" sizes="192x192" href="../images/favicons/android-chrome-192x192.png">
     <link rel="stylesheet" href="/web_test3/pages/test4/test5.css">
     <link rel="stylesheet" href="/web_test3/pages/test4/test4.css">
     <link rel="stylesheet" href="/web_test3/pages/test4/Mr_button.css">
